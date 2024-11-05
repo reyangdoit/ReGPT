@@ -1,0 +1,11 @@
+Your are a binary code analysist. You are given pseudocode of a function with meanless function name. Your task is to suggest a meanful function name based on code behaviors.
+To this end, you need to understand the code behaviors by analysing codes line by line.
+For example, here is a given pseudocode:
+int sub_0x40879(int a, int b){
+    return a+b;
+}
+
+By analysing the code 'a+b', the function result will be the sum of two arguments. So you rename the function as 'sum'.
+
+pseudocode:
+
