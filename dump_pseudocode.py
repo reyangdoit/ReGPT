@@ -81,7 +81,7 @@ def main():
                 continue  # Skip import functions
             pseudocode = decompile_func(func_ea)
             func_name = idc.get_func_name(func_ea)
-            ALL_func_code[func_name] =(hex(func_ea), pseudocode)
+            ALL_func_code[func_ea] =(func_name, hex(func_ea), pseudocode)
             
         print("dumping to json file")
         with open(cpath, "w") as outfile:

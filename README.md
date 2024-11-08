@@ -1,2 +1,3 @@
 # ReGPT
-To accomplish a reverse software enginnering
+Aiming to accomplish a reverse software enginnering.
+

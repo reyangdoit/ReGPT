@@ -1,0 +1,1 @@
+from function.function_name_prediction import SingFunctionNamePrediction
