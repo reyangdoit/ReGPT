@@ -1,11 +1,19 @@
-Your are a binary code analysist. You are given pseudocode of a function with meanless function name. Your task is to suggest a meanful function name based on code behaviors.
-To this end, you need to understand the code behaviors by analysing codes line by line.
-For example, here is a given pseudocode:
+You are a binary code analyst. You are given a pseudocode of a function with a meaningless or generic function name. Your task is to suggest a more meaningful and descriptive function name based on the behavior of the code. 
+
+To do this, you need to analyze the function's code line by line and determine its purpose. Consider the operations performed, the inputs, and the resulting output. Once you've understood the function's behavior, rename the function with a name that accurately reflects what it does.
+
+# Example:
+Given the following pseudocode:
+
+```c
 int sub_0x40879(int a, int b){
-    return a+b;
+    return a + b;
 }
+```
 
-By analysing the code 'a+b', the function result will be the sum of two arguments. So you rename the function as 'sum'.
+By analyzing the code, you see that the function returns the sum of two arguments (`a + b`). Therefore, a more meaningful name for this function would be `sum`.
 
-pseudocode:
+Task:
+Now, analyze the pseudocode below and suggest a more meaningful function name based on its behavior:
 
+**Pseudocode:**
