@@ -13,6 +13,7 @@ description:
 """
 import idaapi
 import idautils
+import ida_funcs
 import idc
 import json
 import ida_ida
@@ -22,6 +23,20 @@ import ida_hexrays
 import ida_idp
 import ida_entry
 import ida_kernwin
+
+
+
+
+def get_string_with_ref_funcs():
+    sc = idautils.Strings()
+    string_to_func_dic = {} # key: string address, value (string text, (reference function addrs))
+    for s in sc:
+        # print ("%x: len=%d type=%d -> '%s'" % (s.ea, s.length, 0, str(s)))
+        ins_list = list(map( lambda x: x.frm, idautils.XrefsTo(s.ea, flags=0)))
+        func_addrs =set(map(lambda x: idc.get_func_attr(x, idc.FUNCATTR_START), ins_list))
+        string_to_func_dic[s.ea] = [str(s), list(func_addrs)]
+
+    return string_to_func_dic
 
 # because the -S script runs very early, we need to load the decompiler
 # manually if we want to use it
@@ -47,6 +62,46 @@ def init_hexrays():
     else:
         print('Couldn\'t load or initialize decompiler: "%s"' % decompiler)
         return False
+
+def get_all_callee_addrs(func_a_ea):
+    # 假设我们已经知道了函数A的起始地址
+
+    # 获取函数A的所有指令地址
+    func_items = list(idautils.FuncItems(func_a_ea))
+
+    # 存储被调用函数的地址
+    called_funcs = set()
+
+    # 遍历函数A中的每条指令
+    for item_ea in func_items:
+        # 获取指令的助记符（例如 call, jmp 等）
+        insn_mnem = idc.print_insn_mnem(item_ea)
+        
+        # 检查是否为调用指令
+        if insn_mnem == 'call' or insn_mnem == "jmp":
+            # 获取操作数类型（例如直接调用，间接调用等）
+            called_funcs.update(idautils.CodeRefsFrom(item_ea, 0))
+
+    # 打印被调用的函数地址
+    return called_funcs - set(func_items[1:])
+
+
+
+
+# Function to create and display the call graph
+def generate_call_graph():
+    # Initialize an empty graph
+    graph = {}
+
+    # Iterate over all functions in the binary
+    for func_ea in idautils.Functions():
+        if is_import_function(func_ea):
+            continue
+        # Get the function object
+        print(f"From func: {hex(func_ea)}")
+        graph[func_ea] =list(get_all_callee_addrs(func_ea))
+
+    return graph
 
 
 def decompile_func(ea):
@@ -75,17 +130,27 @@ def main():
     if init_hexrays():
         idbpath = idc.get_idb_path()
         cpath = idbpath[:-4] + ".json"
-        ALL_func_code = {}
+        features = {"call_graph":{}, "pseudocode":{}, "strings":None}
+
+        # extract pseudocode
+        func_code = {}
         for func_ea in idautils.Functions():
             if is_import_function(func_ea):
                 continue  # Skip import functions
             pseudocode = decompile_func(func_ea)
             func_name = idc.get_func_name(func_ea)
-            ALL_func_code[func_ea] =(func_name, hex(func_ea), pseudocode)
+            func_code[func_ea] =(func_name, hex(func_ea), pseudocode)
+        features["pseudocode"] = func_code
+
+        # extract call graph
+        features["call_graph"] = generate_call_graph()
+
+        # extract strings with all reference functions.
+        features['strings'] = get_string_with_ref_funcs()
             
-        print("dumping to json file")
+        print(f"dumping to json file {cpath}")
         with open(cpath, "w") as outfile:
-            json.dump(ALL_func_code, outfile, indent=4)
+            json.dump(features, outfile, indent=4)
         
     if ida_kernwin.cvar.batch:
         print("All done, exiting.")
