@@ -1,6 +1,8 @@
 """
 For IDA Pro 7.7
 
+Current code support X86/X64 only.
+
 summary: automatic decompilation of functions
 
 description:
@@ -25,7 +27,7 @@ import ida_entry
 import ida_kernwin
 
 
-
+# ============================Strings =======================================
 
 def get_string_with_ref_funcs():
     sc = idautils.Strings()
@@ -38,33 +40,44 @@ def get_string_with_ref_funcs():
 
     return string_to_func_dic
 
-# because the -S script runs very early, we need to load the decompiler
-# manually if we want to use it
-def init_hexrays():
-    ALL_DECOMPILERS = {
-        ida_idp.PLFM_386: "hexrays",
-        ida_idp.PLFM_ARM: "hexarm",
-        ida_idp.PLFM_PPC: "hexppc",
-        ida_idp.PLFM_MIPS: "hexmips",
-    }
-    cpu = ida_idp.ph.id
-    decompiler = ALL_DECOMPILERS.get(cpu, None)
-    if not decompiler:
-        print("No known decompilers for architecture with ID: %d" % ida_idp.ph.id)
-        return False
-    if ida_ida.inf_is_64bit():
-        if cpu == ida_idp.PLFM_386:
-            decompiler = "hexx64"
-        else:
-            decompiler += "64"
-    if ida_loader.load_plugin(decompiler) and ida_hexrays.init_hexrays_plugin():
-        return True
-    else:
-        print('Couldn\'t load or initialize decompiler: "%s"' % decompiler)
-        return False
+
+
+# ============================imported and exported function =======================================
+
+
+def get_plt_functions() -> dict:
+    # return plt/imported function dic: {addr:name}
+    plt_functions = {}
+    # 获取段数目，遍历查找名为'.plt'的段
+    for segment in idautils.Segments():
+        seg_name = idc.get_segm_name(segment)
+        if seg_name == ".plt":
+            # 遍历PLT段内的所有函数
+            func_ea = segment
+            while func_ea != idaapi.BADADDR and func_ea < idc.get_segm_end(segment):
+                plt_functions[func_ea] = idc.get_func_name(func_ea)
+                func_ea = idc.get_next_func(func_ea)
+            break
+
+    return plt_functions
+
+
+
+
+def get_exports() -> dict:
+    # return exported function dic: {addr:name}
+    exports = {}
+    
+    for ordinal, ea, _ , name in idautils.Entries():
+        exports[ea] = name
+    
+    return exports
+
+
+# ============================ call graph =======================================
+
 
 def get_all_callee_addrs(func_a_ea):
-    # 假设我们已经知道了函数A的起始地址
 
     # 获取函数A的所有指令地址
     func_items = list(idautils.FuncItems(func_a_ea))
@@ -102,7 +115,32 @@ def generate_call_graph():
         graph[func_ea] =list(get_all_callee_addrs(func_ea))
 
     return graph
+# ============================ HEXRAY =======================================
 
+# because the -S script runs very early, we need to load the decompiler
+# manually if we want to use it
+def init_hexrays():
+    ALL_DECOMPILERS = {
+        ida_idp.PLFM_386: "hexrays",
+        ida_idp.PLFM_ARM: "hexarm",
+        ida_idp.PLFM_PPC: "hexppc",
+        ida_idp.PLFM_MIPS: "hexmips",
+    }
+    cpu = ida_idp.ph.id
+    decompiler = ALL_DECOMPILERS.get(cpu, None)
+    if not decompiler:
+        print("No known decompilers for architecture with ID: %d" % ida_idp.ph.id)
+        return False
+    if ida_ida.inf_is_64bit():
+        if cpu == ida_idp.PLFM_386:
+            decompiler = "hexx64"
+        else:
+            decompiler += "64"
+    if ida_loader.load_plugin(decompiler) and ida_hexrays.init_hexrays_plugin():
+        return True
+    else:
+        print('Couldn\'t load or initialize decompiler: "%s"' % decompiler)
+        return False
 
 def decompile_func(ea):
     ida_kernwin.msg("Decompiling at: %X..." % ea)
@@ -131,6 +169,9 @@ def main():
         idbpath = idc.get_idb_path()
         cpath = idbpath[:-4] + ".json"
         features = {"call_graph":{}, "pseudocode":{}, "strings":None}
+
+        features['imported_function'] = get_plt_functions()
+        features['exported_function'] = get_exports()
 
         # extract pseudocode
         func_code = {}

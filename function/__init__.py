@@ -1,1 +1,1 @@
-from function.function_name_prediction import SingFunctionNamePrediction
+from function.function_name_prediction import SingleFunctionNamePrediction, NamePredictionWithAidapal

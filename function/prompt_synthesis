@@ -1,0 +1,127 @@
+Alice, a binary reverse enginnering professional, was given the following prompts for a binary function name prediction task: <PROMPT>
+
+Here are Alice's responses:
+
+# Name Prediction Task Example 1
+
+>> Input: 
+int sub_804A9B9(int a1, int a2, const char *a3, char *format, ...)
+{
+  va_list __varargs; // [esp+34h] [ebp+18h] BYREF
+
+  va_start(__varargs, format);
+  sub_804A82E(a1, a2, a3);
+  ustream_printf(*(_DWORD *)(a1 + 16), "Content-Type: text/html\r\n\r\n");
+  sub_804B799(a1, "<h1>%s</h1>", a3);
+  if ( format )
+    sub_804B6CC(a1, format, __varargs);
+  return sub_804A91C(a1);
+}
+
+>> Output:
+{"function_name":"uh_client_error", "name_reason": "First, this function calls a named function ustream_printf, write a html header content to a1. Second, it prints only one head element to a1. It looks like error happens and return a html page with error message."}
+
+
+# Name Prediction Task Example 2
+
+>> Input: 
+int __cdecl sub_804BC94(int a1, int a2)
+{
+  unsigned __int8 v2; // dl
+  unsigned __int8 v3; // al
+
+  v2 = (*(_BYTE *)(*(_DWORD *)a1 + 18) & 4) != 0;
+  v3 = (*(_BYTE *)(*(_DWORD *)a2 + 18) & 4) != 0;
+  if ( v2 == v3 )
+    return alphasort64();
+  else
+    return v3 - v2;
+}
+
+>> Output:
+{"function_name":"dirent_cmp", "name_reason": "First, this function calls a named function alphasort64(), which is used for comparison."}
+
+
+What's the best fit for <PROMPT>?
+
+
+
+*************************o1-mini*****************************
+
+
+Based on the provided examples, the best fit for `<PROMPT>` should clearly instruct Alice to perform function name prediction from decompiled code and to provide reasoning for her choices. Additionally, it should specify the desired output format to ensure consistency. Here's a suitable prompt:
+
+---
+
+**Prompt for Function Name Prediction Task:**
+
+```
+You are Alice, a skilled binary reverse engineering professional. Your task is to predict meaningful and accurate function names based on provided decompiled C code snippets from tools like IDA Pro. For each given function:
+
+1. Analyze the decompiled code to understand its purpose and functionality.
+2. Consider the following strategies to enhance accuracy:
+    - Predict variable names first to better understand the code context.
+    - Use meaningful strings or constants.
+3. Provide a JSON object as the output containing:
+    - `"function_name"`: Your predicted name for the function.
+    - `"name_reason"`: A detailed explanation of the reasoning behind your chosen name.
+
+**Examples:**
+
+# Name Prediction Task Example 1
+
+>> Input: 
+```c
+int sub_804A9B9(int a1, int a2, const char *a3, char *format, ...)
+{
+  va_list __varargs; // [esp+34h] [ebp+18h] BYREF
+
+  va_start(__varargs, format);
+  sub_804A82E(a1, a2, a3);
+  ustream_printf(*(_DWORD *)(a1 + 16), "Content-Type: text/html\r\n\r\n");
+  sub_804B799(a1, "<h1>%s</h1>", a3);
+  if ( format )
+    sub_804B6CC(a1, format, __varargs);
+  return sub_804A91C(a1);
+}
+```
+
+>> Output:
+```json
+{
+  "function_name": "uh_client_error",
+  "name_reason": "First, this function calls a named function ustream_printf to write an HTML header to a1. It prints a single header element, suggesting that an error has occurred and it returns an HTML page with an error message."
+}
+```
+
+# Name Prediction Task Example 2
+
+>> Input: 
+```c
+int __cdecl sub_804BC94(int a1, int a2)
+{
+  unsigned __int8 v2; // dl
+  unsigned __int8 v3; // al
+
+  v2 = (*(_BYTE *)(*(_DWORD *)a1 + 18) & 4) != 0;
+  v3 = (*(_BYTE *)(*(_DWORD *)a2 + 18) & 4) != 0;
+  if ( v2 == v3 )
+    return alphasort64();
+  else
+    return v3 - v2;
+}
+```
+
+>> Output:
+```json
+{
+  "function_name": "dirent_cmp",
+  "name_reason": "This function compares directory entries. It calls the known function alphasort64() when the comparison flags are equal, indicating it's used for sorting directory entries."
+}
+```
+
+---
+
+**Instructions:**
+
+Using the above format, provide function name predictions and explanations for the following decompiled C code snippets.

@@ -49,3 +49,10 @@ Upon analysis, you observe that the function returns the sum of two arguments (`
 Analyze the pseudocode below and suggest a more meaningful function name "only" (no explaination) based on its behavior:
 
 Pseudocode:"""
+
+
+
+
+# copy from paper "Binary Code Summarization: Benchmarking ChatGPT/GPT-4 and Other Large Language Models."
+
+PROMT_BinSum = """Imagine you're an expert in binary reverse engineering. I'll provide you with a binary function, and your task is to conduct a thorough analysis of its functionality. Explain its underlying operations and logic in detail, and then suggest an appropriate, intuitive name for the function from a coder’s perspective."""
