@@ -2,7 +2,7 @@ from function import SingleFunctionNamePrediction
 import logging
 # 设置日志配置
 logging.basicConfig(
-    level=logging.DEBUG,  # 设置最低级别为DEBUG
+    level=logging.INFO,  # 设置最低级别为DEBUG
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
@@ -74,9 +74,20 @@ def test_singlefunctionprediction():
 def test_aidapal():
     from function import NamePredictionWithAidapal
     np = NamePredictionWithAidapal()
-    name = np.prediction(function_pseudocode=func_pseudocode)
+    name = np.predict(function_pseudocode=func_pseudocode)
     print(name)
 
+
+def test_predict_all():
+    from function import RenameSoftwareFunctions
+
+    rsf = RenameSoftwareFunctions("./dataset/uhttpd_stripped.json")
+
+    
+
+
+
 if __name__ == "__main__":
-  test_aidapal()
+  # test_aidapal()
+  test_predict_all()
     

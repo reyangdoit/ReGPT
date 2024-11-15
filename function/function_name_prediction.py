@@ -22,7 +22,9 @@ import logging
 from function.prompts import PROMPT_DEBUG, PROMPT_ONLY_FUNCTION_NAME
 import requests
 import json
-
+import numpy as np
+import re
+from tqdm import tqdm
 
 # where ollama service is running
 ollama_url = "http://127.0.0.1:11434/api/generate"
@@ -31,7 +33,7 @@ class NamePredictionWithAidapal:
     def __init__(self) -> None:
         pass
 
-    def prediction(self, function_pseudocode: str, additional_info = None) -> str:
+    def predict(self, function_pseudocode: str, additional_info = None) -> str:
         url = ollama_url
         headers = {"Content-Type": "application/json"}
         payload = {"model": "aidapal", "prompt": function_pseudocode, "stream": False,"format":"json"}
@@ -76,7 +78,7 @@ class RenameSoftwareFunctions:
                 ]
             
             strings_to_func:[
-                function1_addr : [string1, string2]
+                str1_addr : [string1, [func1, func2]]
             ]
             }.
 
@@ -89,34 +91,114 @@ class RenameSoftwareFunctions:
             }
         '''
 
+        self._llm = NamePredictionWithAidapal()
+
         self.software_dic = None
         with open(software_datas, 'r') as f:
             self.software_dic = json.load(f)
 
-    
-    def init_weights_in_call_graph(self):
+        self._pseudocode = self.software_dic['pseudocode']
+        function_sorted = self.sort_function_by_confidence()
+        self.predict_all(function_sorted)
+
+
+    def sort_function_by_confidence(self) -> np.array:
         '''
-        visit functions in call graph from bottom up along with assigning the confidence score to them.
+        using page rank to calculate weight in call graph
         The rule of calculating confidence score:
             1. If functions calls imported function, add 1.
             2. If function calls a unamed function (sub_xxx), minus 1.
             3. If function refers a string, add 0-1, value depends on string meaning confidence.
+
+        return the list of function addrs, sorted by their confidence.
         '''
-        pass
-        
+        IMPORTED_ADDON = 0.1 # 导入函数对目标函数的加分
+        STRING_ADDON = 0.1 # 字符串对目标函数的加分
         call_graph = self.software_dic['call_graph']
+        plt = self.software_dic['imported_function']
+        
+        nodes_and_scores = {}
+        # using imported and strings to init weights of nodes.
+        for x in call_graph.keys():
+            nodes_and_scores[int(x)] = 0
+
+        for n in call_graph:
+            for callee in call_graph[n]:
+                if str(callee) in plt:
+                    nodes_and_scores[int(n)] += IMPORTED_ADDON
+                    continue
+                elif callee not in nodes_and_scores:
+                    nodes_and_scores[callee] = 0
+        
+        for _, v in self.software_dic['strings'].items():
+            string_score = np.log10(len(v[0])/2)/10
+            for func_addr in v[1]:
+                if func_addr in nodes_and_scores:
+                    nodes_and_scores[func_addr] += string_score
+                
+        # init scores
+        func_addrs = np.array(list(nodes_and_scores.keys()))
+        scores = np.array(list(nodes_and_scores.values()))
+
+        nodes_num = len(nodes_and_scores)
+
+        pagerank_values = np.ones(nodes_num) / nodes_num  + scores
+
+        link_matrix = np.zeros((nodes_num, nodes_num))
+
+        # 出链矩阵
+        for page, outgoing_links in call_graph.items():
+            page = int(page)
+            if outgoing_links:
+                for dest_page in outgoing_links:
+                    if dest_page in func_addrs:
+                        dest_page_i = np.where(func_addrs == dest_page)[0][0]
+                        page_i = np.where(func_addrs == page)[0][0]
+                        link_matrix[dest_page_i, page_i] = 1/len(outgoing_links)
+
+        # 迭代计算pagerank值，直到收敛
+        delta = 1
+        damping_factor = 0.85
+        i = 0
+        while delta > 1.0e-6:
+            new_pagerank_values = (1 - damping_factor) / nodes_num + damping_factor * link_matrix.dot(pagerank_values)
+            delta = np.linalg.norm(new_pagerank_values - pagerank_values)
+            pagerank_values = new_pagerank_values
+            i += 1
+            print(f"{i}th calculation.")
+        
+        sorted_indices = np.argsort(pagerank_values)[::-1]
+        return func_addrs[sorted_indices]
+
+
+
+    def _update_func_names_in_pseudocode(self, pseudocode_text, predict_res) -> str:
+        '''
+
+        return: updated pseudocode
+        '''
+
+        for addr, func_name in predict_res.items():
+            addr_hex = "sub_" + str(hex(addr))[2:]
+            # print(addr_hex)
+            pseudocode_text = re.sub(addr_hex, func_name, pseudocode_text, flags=re.IGNORECASE)
+        
+        return pseudocode_text
+
+
+    def predict_all(self, funcs):
+        
+        predict_res = {} # {addr : predicted_name}
 
         
+        for func in tqdm(funcs):
+            func_pseudocode = self._pseudocode[str(func)][2]
+            #print(func_pseudocode)
+            #print('\n\n\n')
+            func_pseudocode = self._update_func_names_in_pseudocode(func_pseudocode, predict_res=predict_res)
+            # replace the predicted function names in pseudocode.
 
+            predict_res[func] = self._llm.predict(func_pseudocode)
+            # 
 
-
-
-    def sort_function_by_confidence(self):
-        pass
-
-
-
-
-
-    def predict_all(self):
-        pass
+        print(predict_res)
