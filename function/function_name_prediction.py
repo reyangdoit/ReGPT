@@ -19,6 +19,7 @@ To get a better decompilation result, this code applies several strategies:
 
 import model.chatgpt
 import logging
+import os
 from function.prompts import PROMPT_DEBUG, PROMPT_ONLY_FUNCTION_NAME
 import requests
 import json
@@ -63,7 +64,7 @@ class SingleFunctionNamePrediction:
 
 class RenameSoftwareFunctions:
 
-    def __init__(self, software_datas) -> None:
+    def __init__(self, software_datas, use_prediction_cache=True) -> None:
         '''
         software_datas: the json file path.
         The decompiled results should be placed in json file with format
@@ -90,7 +91,7 @@ class RenameSoftwareFunctions:
                 exported_addr: name
             }
         '''
-
+        self._uc = use_prediction_cache
         self._llm = NamePredictionWithAidapal()
 
         self.software_dic = None
@@ -98,9 +99,8 @@ class RenameSoftwareFunctions:
             self.software_dic = json.load(f)
 
         self._pseudocode = self.software_dic['pseudocode']
-        function_sorted = self.sort_function_by_confidence()
-        self.predict_all(function_sorted)
 
+        self._prediction_res_json_path = os.path.join(os.path.dirname(software_datas), os.path.basename(software_datas)+".func_names")
 
     def sort_function_by_confidence(self) -> np.array:
         '''
@@ -165,7 +165,7 @@ class RenameSoftwareFunctions:
             delta = np.linalg.norm(new_pagerank_values - pagerank_values)
             pagerank_values = new_pagerank_values
             i += 1
-            print(f"{i}th calculation.")
+            # print(f"{i}th calculation.")
         
         sorted_indices = np.argsort(pagerank_values)[::-1]
         return func_addrs[sorted_indices]
@@ -186,19 +186,34 @@ class RenameSoftwareFunctions:
         return pseudocode_text
 
 
-    def predict_all(self, funcs):
-        
-        predict_res = {} # {addr : predicted_name}
+    def predict_all(self):
 
+        if self._uc and os.path.exists(self._prediction_res_json_path):
+            with open(self._prediction_res_json_path, 'r') as f:
+                return json.load(f)
+
+
+        funcs = self.sort_function_by_confidence()
+        predict_res = {} # {addr : predicted_name}
         
-        for func in tqdm(funcs):
+        for func in tqdm(funcs, desc="Predicting Function Names"):
             func_pseudocode = self._pseudocode[str(func)][2]
             #print(func_pseudocode)
             #print('\n\n\n')
             func_pseudocode = self._update_func_names_in_pseudocode(func_pseudocode, predict_res=predict_res)
             # replace the predicted function names in pseudocode.
 
-            predict_res[func] = self._llm.predict(func_pseudocode)
+            predict_res[int(func)] = self._llm.predict(func_pseudocode)
             # 
+        
+        # print(predict_res)
 
-        print(predict_res)
+        # save cache
+        with open(self._prediction_res_json_path, 'w') as f:
+            json.dump(predict_res, f)
+
+        return predict_res
+
+
+    def get_callgraph(self):
+        return self.software_dic['call_graph']

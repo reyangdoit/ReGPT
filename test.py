@@ -80,10 +80,16 @@ def test_aidapal():
 
 def test_predict_all():
     from function import RenameSoftwareFunctions
+    from function import Modularization
 
-    rsf = RenameSoftwareFunctions("./dataset/uhttpd_stripped.json")
+    rsf = RenameSoftwareFunctions("./dataset/stripped/software_1.json")
+    func_names = rsf.predict_all()
+    call_graph = rsf.get_callgraph()
 
-    
+    modular = Modularization()
+    res = modular.predict(name_dic=func_names, call_graph=call_graph)
+    print(res)
+
 
 
 
