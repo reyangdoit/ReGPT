@@ -1,0 +1,883 @@
+BinDiff 7 (@377901646, Jun  7 2021), (c)2004-2011 zynamics GmbH, (c)2011-2021 Google LLC.
+BinExport 12 (@377901646, Jun  7 2021), (c)2004-2011 zynamics GmbH, (c)2011-2021 Google LLC.
+                                  ...:::::....                                  
+                          .:-=+**###%%%%%%%%###**+=-:.                          
+                      .-+*#%%%%%#**#*+====+*#**#%%%%%#*+-:                      
+               .  .-+#%%%%%%#*-:::. .-====-. .:::-+##%%%%%#+-.                  
+          .      =#%%%%%%#+:::-*#= -###**###= =#*-:::+#%%%%%%#=      .          
+         :=====-::::-=++-: :-:-+#*-::=*--*=::-*#*-::: :-++=:::::-=====:         
+        ==-::::--=+++-  -=++++-.:=**+ .+*: =**+:.-++++=-  -+++==-::::-==        
+       .%%##**+=-:..:..===+-=***=::::-*--*-::::=***=-+===..:..:-=+**##%%. =     
+     : .%%##**++***=  -=-=:.++++**+++++**+++++**++++.:=-=-  =***++**##%%. =     
+    .  .%%%%#*++++- : .-=:.=-==+=.:::::..:::::.=+=--=.:==. : -++++*#%%%%.  .    
+   . .: *%%%%#++=..+*=... =:::::. +++==..-==++ ..::::= ..:=*+..=++#%%%@* :. .   
+  . .#+ =@%%%#*- :**+++++..-:..-==-::.:-=:.::-==-..:-:.+++++**: =*#%%%@= *#. .  
+    *##..%%%#*- :+++++++++: .==-:-:: :-::-: ::-:-==: :=++++++++: -*#%%%..##*    
+   =%=-= =%*+= .++++++++*##: ::::::=- .... -=:::::- :##*++++++++. =+*%= +-=%+   
+: .%%* #: +#+. =++++*#%@@@@@+:..:::::.-::-.:::::..:+@@@@@%#*+=++= .+#= -#.+%%: .
+  +%#+ *#: =- -+++*%@@%*++++#%%*+==. :::::: .==+*%%#++++*%@@%*+++- -= -#* =%%+  
+  #%-.=.=#=  .+++#@@*-::.  ...=#@@@%*=----=*%@@@#=...  .::-*@@#+++.  =%-:+:-%#  
+ .#%+:::+%%- -++#@@= -@@* -%#. .*@@@@@@@@@@@@@@*  .#%- *@@- =@@#++- -%%+:-:+%#. 
+ :##%+ *%#%: =+*@@* .::-.  .. . .%@@@@@@@@@@@@%. : ..  .-::. #@@*+= :%#%* +%#%: 
+ :##-:+:=%#. =+#@@* ::       .:. %@@@@@@@@@@@@% .:        -. *@@#== :%%-:+:-##: 
+ .#%=:-:+%%: -+#@@%: ++-----=+: =@@@@@@@@@@@@@@= -+=-----++ :%@@#+- :%%=:-:=##. 
+  *%=:-:+%%+ :##%@@%-.-+++++=::+@@@@@******@@@@%+.:=+++++-.=%@@%#*. +%#=:-:=%*  
+. -%::+:-%%#: =##%@@@%+=----=*%@@@%%@*-  -*@%%@@@%*=----=+%@@@%##= -#%%-:+::%- .
+   *#*+*###%#: =##%%@%**%@@@@@@@@@+.+*+::=*+.*@@@@@@@@@%**%@%%##= -#####*+*#*  =
+ . :#%-:--.*%#= :*##%##@@@@@@@@@@@@#++*%%*++#@@@@@@@@@@@@##%##+. =%#.--::#%#: . 
+    :-:=++-:=#%*- :+###%%%%%%@@@@@@@@@@@@@@@@@@@@@@%%%%%####+: -#%+::##*:-=-    
+     .-::::=-.=+**=..:=*#####%%%%%%%%%%%%%%%%%%%%%%#####*=:..=**+::**=-=**.     
+      .*##= =-- -%%#*=: .:=+**####################**+-:. :=*#%#.-+#* =*=.:      
+       .=+::=:: -%##%*: :::.. ..::---======---::.. ..::: :*%###.:-=*:-=:        
+      .   .:.-**####+ .-=-:..:---:     --    .:---:..:=--. +%##**+::=-   .      
+         .  =######+ .---. +%@@@@@%+. -%%= .+%@@@@@%+ .---. +####%#-            
+             :=*##*. ---: -%%%@@@@*%- +%%+ =%*@@@%%%%- :--- .#%#*=:             
+                :=: .:::.  -====+= .  ====  . =+====-  ::::. :=:                
+           .::::..:::::.:::......:::::...:::::.....:::::.::::::.::::.           
+         .---::=+=::::-=-:-=+++=:::::-++-::::=++++-::::=+=::::-=-::---.         
+      .  :....+%#%-...*@-.=@#++##=...#%#%:...#@+=+%*..-%#%+...-@*.....:  .      
+         ....+@*-%@-..*@- =@+  :@%..*@+=@%:..#@++*%+.-@%-*@+..-@*......         
+      .  ...=@*+++#%-.*@- -@#+*##-.*%++++%#..#%---:.-%#+++*@=.-@%**+...  .      
+          ..::.....-:.::...:---:...::....:-..::.....:-.....::..:---:..          
+        .                                                              .        
+
+2024-11-21 16:27:57,398 - DEBUG - aiDAPal: aidapal False
+2024-11-21 16:27:57,398 - DEBUG - aiDAPal: aidapal True
+2024-11-21 16:27:57,398 - DEBUG - aiDAPal: data analysis aidapal True
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal.py: undefined function __plugins__idapal.PLUGIN_ENTRY
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal_qt_interface.py: undefined function __plugins__idapal_qt_interface.PLUGIN_ENTRY
+IDA has found an unpacked version of database: D:\re_se\ReGPT\dataset\stripped\software_1.idb
+on the disk.
+
+Should we proceed with the unpacked files?
+ -> Pro~c~eed with unpacked base
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   647168    79 8192 allocating memory for b-tree...
+   163840    20 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+  1073152            total memory allocated
+
+Loading processor module D:\software\IDA_Pro_7.7\IDA_Pro_7.7\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Loading type libraries...
+Autoanalysis subsystem has been initialized.
+                                  ...:::::....                                  
+                          .:-=+**###%%%%%%%%###**+=-:.                          
+                      .-+*#%%%%%#**#*+====+*#**#%%%%%#*+-:                      
+               .  .-+#%%%%%%#*-:::. .-====-. .:::-+##%%%%%#+-.                  
+          .      =#%%%%%%#+:::-*#= -###**###= =#*-:::+#%%%%%%#=      .          
+         :=====-::::-=++-: :-:-+#*-::=*--*=::-*#*-::: :-++=:::::-=====:         
+        ==-::::--=+++-  -=++++-.:=**+ .+*: =**+:.-++++=-  -+++==-::::-==        
+       .%%##**+=-:..:..===+-=***=::::-*--*-::::=***=-+===..:..:-=+**##%%. =     
+     : .%%##**++***=  -=-=:.++++**+++++**+++++**++++.:=-=-  =***++**##%%. =     
+    .  .%%%%#*++++- : .-=:.=-==+=.:::::..:::::.=+=--=.:==. : -++++*#%%%%.  .    
+   . .: *%%%%#++=..+*=... =:::::. +++==..-==++ ..::::= ..:=*+..=++#%%%@* :. .   
+  . .#+ =@%%%#*- :**+++++..-:..-==-::.:-=:.::-==-..:-:.+++++**: =*#%%%@= *#. .  
+    *##..%%%#*- :+++++++++: .==-:-:: :-::-: ::-:-==: :=++++++++: -*#%%%..##*    
+   =%=-= =%*+= .++++++++*##: ::::::=- .... -=:::::- :##*++++++++. =+*%= +-=%+   
+: .%%* #: +#+. =++++*#%@@@@@+:..:::::.-::-.:::::..:+@@@@@%#*+=++= .+#= -#.+%%: .
+  +%#+ *#: =- -+++*%@@%*++++#%%*+==. :::::: .==+*%%#++++*%@@%*+++- -= -#* =%%+  
+  #%-.=.=#=  .+++#@@*-::.  ...=#@@@%*=----=*%@@@#=...  .::-*@@#+++.  =%-:+:-%#  
+ .#%+:::+%%- -++#@@= -@@* -%#. .*@@@@@@@@@@@@@@*  .#%- *@@- =@@#++- -%%+:-:+%#. 
+ :##%+ *%#%: =+*@@* .::-.  .. . .%@@@@@@@@@@@@%. : ..  .-::. #@@*+= :%#%* +%#%: 
+ :##-:+:=%#. =+#@@* ::       .:. %@@@@@@@@@@@@% .:        -. *@@#== :%%-:+:-##: 
+ .#%=:-:+%%: -+#@@%: ++-----=+: =@@@@@@@@@@@@@@= -+=-----++ :%@@#+- :%%=:-:=##. 
+  *%=:-:+%%+ :##%@@%-.-+++++=::+@@@@@******@@@@%+.:=+++++-.=%@@%#*. +%#=:-:=%*  
+. -%::+:-%%#: =##%@@@%+=----=*%@@@%%@*-  -*@%%@@@%*=----=+%@@@%##= -#%%-:+::%- .
+   *#*+*###%#: =##%%@%**%@@@@@@@@@+.+*+::=*+.*@@@@@@@@@%**%@%%##= -#####*+*#*  =
+ . :#%-:--.*%#= :*##%##@@@@@@@@@@@@#++*%%*++#@@@@@@@@@@@@##%##+. =%#.--::#%#: . 
+    :-:=++-:=#%*- :+###%%%%%%@@@@@@@@@@@@@@@@@@@@@@%%%%%####+: -#%+::##*:-=-    
+     .-::::=-.=+**=..:=*#####%%%%%%%%%%%%%%%%%%%%%%#####*=:..=**+::**=-=**.     
+      .*##= =-- -%%#*=: .:=+**####################**+-:. :=*#%#.-+#* =*=.:      
+       .=+::=:: -%##%*: :::.. ..::---======---::.. ..::: :*%###.:-=*:-=:        
+      .   .:.-**####+ .-=-:..:---:     --    .:---:..:=--. +%##**+::=-   .      
+         .  =######+ .---. +%@@@@@%+. -%%= .+%@@@@@%+ .---. +####%#-            
+             :=*##*. ---: -%%%@@@@*%- +%%+ =%*@@@%%%%- :--- .#%#*=:             
+                :=: .:::.  -====+= .  ====  . =+====-  ::::. :=:                
+           .::::..:::::.:::......:::::...:::::.....:::::.::::::.::::.           
+         .---::=+=::::-=-:-=+++=:::::-++-::::=++++-::::=+=::::-=-::---.         
+      .  :....+%#%-...*@-.=@#++##=...#%#%:...#@+=+%*..-%#%+...-@*.....:  .      
+         ....+@*-%@-..*@- =@+  :@%..*@+=@%:..#@++*%+.-@%-*@+..-@*......         
+      .  ...=@*+++#%-.*@- -@#+*##-.*%++++%#..#%---:.-%#+++*@=.-@%**+...  .      
+          ..::.....-:.::...:---:...::....:-..::.....:-.....::..:---:..          
+        .                                                              .        
+
+2024-11-21 16:27:57,463 - DEBUG - aiDAPal: aidapal False
+2024-11-21 16:27:57,463 - DEBUG - aiDAPal: aidapal True
+2024-11-21 16:27:57,463 - DEBUG - aiDAPal: data analysis aidapal True
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal.py: undefined function __plugins__idapal.PLUGIN_ENTRY
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal_qt_interface.py: undefined function __plugins__idapal_qt_interface.PLUGIN_ENTRY
+Database for file 'software_1' has been loaded.
+Hex-Rays Decompiler plugin has been loaded (v7.7.0.220118)
+  License: 57-338D-4B59-97 Hex-Rays SA (99 users)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+================================================================================
+Findcrypt v0.2 by David BERARD, 2017
+Findcrypt search shortcut key is Ctrl-Alt-F
+Global rules in D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\findcrypt3.rules
+User-defined rules in C:\Users\yangs\AppData\Roaming\Hex-Rays\IDA Pro\plugins\findcrypt-yara/*.rules
+================================================================================
+FindFunc (x86/x64) 1.4 by feber loaded
+2024-11-21 16:27:57,485 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-11-21 16:27:57,485 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+2024-11-21 16:27:57,489 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-11-21 16:27:57,489 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+2024-11-21 16:27:57,498 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-11-21 16:27:57,498 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+2024-11-21 16:27:57,502 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-11-21 16:27:57,502 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+                                  ...:::::....                                  
+                          .:-=+**###%%%%%%%%###**+=-:.                          
+                      .-+*#%%%%%#**#*+====+*#**#%%%%%#*+-:                      
+               .  .-+#%%%%%%#*-:::. .-====-. .:::-+##%%%%%#+-.                  
+          .      =#%%%%%%#+:::-*#= -###**###= =#*-:::+#%%%%%%#=      .          
+         :=====-::::-=++-: :-:-+#*-::=*--*=::-*#*-::: :-++=:::::-=====:         
+        ==-::::--=+++-  -=++++-.:=**+ .+*: =**+:.-++++=-  -+++==-::::-==        
+       .%%##**+=-:..:..===+-=***=::::-*--*-::::=***=-+===..:..:-=+**##%%. =     
+     : .%%##**++***=  -=-=:.++++**+++++**+++++**++++.:=-=-  =***++**##%%. =     
+    .  .%%%%#*++++- : .-=:.=-==+=.:::::..:::::.=+=--=.:==. : -++++*#%%%%.  .    
+   . .: *%%%%#++=..+*=... =:::::. +++==..-==++ ..::::= ..:=*+..=++#%%%@* :. .   
+  . .#+ =@%%%#*- :**+++++..-:..-==-::.:-=:.::-==-..:-:.+++++**: =*#%%%@= *#. .  
+    *##..%%%#*- :+++++++++: .==-:-:: :-::-: ::-:-==: :=++++++++: -*#%%%..##*    
+   =%=-= =%*+= .++++++++*##: ::::::=- .... -=:::::- :##*++++++++. =+*%= +-=%+   
+: .%%* #: +#+. =++++*#%@@@@@+:..:::::.-::-.:::::..:+@@@@@%#*+=++= .+#= -#.+%%: .
+  +%#+ *#: =- -+++*%@@%*++++#%%*+==. :::::: .==+*%%#++++*%@@%*+++- -= -#* =%%+  
+  #%-.=.=#=  .+++#@@*-::.  ...=#@@@%*=----=*%@@@#=...  .::-*@@#+++.  =%-:+:-%#  
+ .#%+:::+%%- -++#@@= -@@* -%#. .*@@@@@@@@@@@@@@*  .#%- *@@- =@@#++- -%%+:-:+%#. 
+ :##%+ *%#%: =+*@@* .::-.  .. . .%@@@@@@@@@@@@%. : ..  .-::. #@@*+= :%#%* +%#%: 
+ :##-:+:=%#. =+#@@* ::       .:. %@@@@@@@@@@@@% .:        -. *@@#== :%%-:+:-##: 
+ .#%=:-:+%%: -+#@@%: ++-----=+: =@@@@@@@@@@@@@@= -+=-----++ :%@@#+- :%%=:-:=##. 
+  *%=:-:+%%+ :##%@@%-.-+++++=::+@@@@@******@@@@%+.:=+++++-.=%@@%#*. +%#=:-:=%*  
+. -%::+:-%%#: =##%@@@%+=----=*%@@@%%@*-  -*@%%@@@%*=----=+%@@@%##= -#%%-:+::%- .
+   *#*+*###%#: =##%%@%**%@@@@@@@@@+.+*+::=*+.*@@@@@@@@@%**%@%%##= -#####*+*#*  =
+ . :#%-:--.*%#= :*##%##@@@@@@@@@@@@#++*%%*++#@@@@@@@@@@@@##%##+. =%#.--::#%#: . 
+    :-:=++-:=#%*- :+###%%%%%%@@@@@@@@@@@@@@@@@@@@@@%%%%%####+: -#%+::##*:-=-    
+     .-::::=-.=+**=..:=*#####%%%%%%%%%%%%%%%%%%%%%%#####*=:..=**+::**=-=**.     
+      .*##= =-- -%%#*=: .:=+**####################**+-:. :=*#%#.-+#* =*=.:      
+       .=+::=:: -%##%*: :::.. ..::---======---::.. ..::: :*%###.:-=*:-=:        
+      .   .:.-**####+ .-=-:..:---:     --    .:---:..:=--. +%##**+::=-   .      
+         .  =######+ .---. +%@@@@@%+. -%%= .+%@@@@@%+ .---. +####%#-            
+             :=*##*. ---: -%%%@@@@*%- +%%+ =%*@@@%%%%- :--- .#%#*=:             
+                :=: .:::.  -====+= .  ====  . =+====-  ::::. :=:                
+           .::::..:::::.:::......:::::...:::::.....:::::.::::::.::::.           
+         .---::=+=::::-=-:-=+++=:::::-++-::::=++++-::::=+=::::-=-::---.         
+      .  :....+%#%-...*@-.=@#++##=...#%#%:...#@+=+%*..-%#%+...-@*.....:  .      
+         ....+@*-%@-..*@- =@+  :@%..*@+=@%:..#@++*%+.-@%-*@+..-@*......         
+      .  ...=@*+++#%-.*@- -@#+*##-.*%++++%#..#%---:.-%#+++*@=.-@%**+...  .      
+          ..::.....-:.::...:---:...::....:-..::.....:-.....::..:---:..          
+        .                                                              .        
+
+2024-11-21 16:27:57,506 - DEBUG - aiDAPal: aidapal False
+2024-11-21 16:27:57,506 - DEBUG - aiDAPal: aidapal True
+2024-11-21 16:27:57,506 - DEBUG - aiDAPal: data analysis aidapal True
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal.py: undefined function __plugins__idapal.PLUGIN_ENTRY
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal_qt_interface.py: undefined function __plugins__idapal_qt_interface.PLUGIN_ENTRY
+2024-11-21 16:27:57,510 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-11-21 16:27:57,510 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+================================================================================
+Keypatch v2.2 (c) Nguyen Anh Quynh & Thanh Nguyen, 2018
+Keypatch is using Keystone v0.9.2
+2024-11-21 16:27:57,514 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+Keypatch Patcher's shortcut key is Ctrl-Alt-K
+Use the same hotkey Ctrl-Alt-K to open 'Fill Range' window on a selected range of code
+To revert (undo) the last patching, choose menu Edit | Keypatch | Undo last patching2024-11-21 16:27:57,514 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+
+Keypatch Search is available from menu Edit | Keypatch | Search
+Find more information about Keypatch at http://keystone-engine.org/keypatch
+================================================================================
+LazyIDA (v1.0.0.3) plugin has been loaded.
+
+ IDA Strong Charset Code View 0.1 
+ Enable/Disable Strong Charset View Use 'shift + a' 
+ IDA Strong Charset Code View Plugin By 微笑一刀 
+
+2024-11-21 16:27:57,522 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=None socket_options=None
+2024-11-21 16:27:57,522 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001AE7FC33700>
+2024-11-21 16:27:57,522 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-11-21 16:27:57,523 - DEBUG - send_request_headers.complete
+2024-11-21 16:27:57,523 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-11-21 16:27:57,523 - DEBUG - send_request_body.complete
+2024-11-21 16:27:57,523 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+Waiting for autoanalysis...
+8049950: restored microcode from idb
+8049950: restored pseudocode from idb
+804A008: restored microcode from idb
+804A008: restored pseudocode from idb
+804A02A: restored microcode from idb
+804A02A: restored pseudocode from idb
+804A02E: restored microcode from idb
+804A02E: restored pseudocode from idb
+804A08C: restored microcode from idb
+804A08C: restored pseudocode from idb
+804A0EF: restored microcode from idb
+804A0EF: restored pseudocode from idb
+804A125: restored microcode from idb
+804A125: restored pseudocode from idb
+804A348: restored microcode from idb
+804A348: restored pseudocode from idb
+804A403: restored microcode from idb
+804A403: restored pseudocode from idb
+804A42D: restored microcode from idb
+804A42D: restored pseudocode from idb
+804A444: restored microcode from idb
+804A444: restored pseudocode from idb
+804A510: restored microcode from idb
+804A510: restored pseudocode from idb
+804A6B9: restored microcode from idb
+804A6B9: restored pseudocode from idb
+804A70A: restored microcode from idb
+804A70A: restored pseudocode from idb
+804A72A: restored microcode from idb
+804A72A: restored pseudocode from idb
+804A75C: restored microcode from idb
+804A75C: restored pseudocode from idb
+804A777: restored microcode from idb
+804A777: restored pseudocode from idb
+804A7BB: restored microcode from idb
+804A7BB: restored pseudocode from idb
+804A7F0: restored microcode from idb
+804A7F0: restored pseudocode from idb
+804A804: restored microcode from idb
+804A804: restored pseudocode from idb
+804A82E: restored microcode from idb
+804A82E: restored pseudocode from idb
+804A91C: restored microcode from idb
+804A91C: restored pseudocode from idb
+804A9B9: restored microcode from idb
+804A9B9: restored pseudocode from idb
+804AA1D: restored microcode from idb
+804AA1D: restored pseudocode from idb
+804AA54: restored microcode from idb
+804AA54: restored pseudocode from idb
+804AC14: restored microcode from idb
+804AC14: restored pseudocode from idb
+804AD7E: restored microcode from idb
+804AD7E: restored pseudocode from idb
+804AD90: restored microcode from idb
+804AD90: restored pseudocode from idb
+804B309: restored microcode from idb
+804B309: restored pseudocode from idb
+804B391: restored microcode from idb
+804B391: restored pseudocode from idb
+804B39E: restored microcode from idb
+804B39E: restored pseudocode from idb
+804B47B: restored microcode from idb
+804B47B: restored pseudocode from idb
+804B488: restored microcode from idb
+804B488: restored pseudocode from idb
+804B5AE: restored microcode from idb
+804B5AE: restored pseudocode from idb
+804B5F8: restored microcode from idb
+804B5F8: restored pseudocode from idb
+804B63A: restored microcode from idb
+804B63A: restored pseudocode from idb
+804B6CC: restored microcode from idb
+804B6CC: restored pseudocode from idb
+804B799: restored microcode from idb
+804B799: restored pseudocode from idb
+804B7B3: restored microcode from idb
+804B7B3: restored pseudocode from idb
+804B7E6: restored microcode from idb
+804B7E6: restored pseudocode from idb
+804B89A: restored microcode from idb
+804B89A: restored pseudocode from idb
+804B941: restored microcode from idb
+804B941: restored pseudocode from idb
+804B9E6: restored microcode from idb
+804B9E6: restored pseudocode from idb
+804BA46: restored microcode from idb
+804BA46: restored pseudocode from idb
+804BA75: restored microcode from idb
+804BA75: restored pseudocode from idb
+804BABF: restored microcode from idb
+804BABF: restored pseudocode from idb
+804BADF: restored microcode from idb
+804BADF: restored pseudocode from idb
+804BB33: restored microcode from idb
+804BB33: restored pseudocode from idb
+804BB4E: restored microcode from idb
+804BB4E: restored pseudocode from idb
+804BB69: restored microcode from idb
+804BB69: restored pseudocode from idb
+804BB7E: restored microcode from idb
+804BB7E: restored pseudocode from idb
+804BBC0: restored microcode from idb
+804BBC0: restored pseudocode from idb
+804BC25: restored microcode from idb
+804BC25: restored pseudocode from idb
+804BC94: restored microcode from idb
+804BC94: restored pseudocode from idb
+804BCC7: restored microcode from idb
+804BCC7: restored pseudocode from idb
+804BCDB: restored microcode from idb
+804BCDB: restored pseudocode from idb
+804BD0F: restored microcode from idb
+804BD0F: restored pseudocode from idb
+804BEFD: restored microcode from idb
+804BEFD: restored pseudocode from idb
+804BF36: restored microcode from idb
+804BF36: restored pseudocode from idb
+804BFBF: restored microcode from idb
+804BFBF: restored pseudocode from idb
+804BFFD: restored microcode from idb
+804BFFD: restored pseudocode from idb
+804C0B3: restored microcode from idb
+804C0B3: restored pseudocode from idb
+804C0E3: restored microcode from idb
+804C0E3: restored pseudocode from idb
+804C4F3: restored microcode from idb
+804C4F3: restored pseudocode from idb
+804C5B7: restored microcode from idb
+804C5B7: restored pseudocode from idb
+804CBD1: restored microcode from idb
+804CBD1: restored pseudocode from idb
+804CBEF: restored microcode from idb
+804CBEF: restored pseudocode from idb
+804CDEC: restored microcode from idb
+804CDEC: restored pseudocode from idb
+804CF0C: restored microcode from idb
+804CF0C: restored pseudocode from idb
+804D09A: restored microcode from idb
+804D09A: restored pseudocode from idb
+804D157: restored microcode from idb
+804D157: restored pseudocode from idb
+804D1F1: restored microcode from idb
+804D1F1: restored pseudocode from idb
+804D26E: restored microcode from idb
+804D26E: restored pseudocode from idb
+804D2E7: restored microcode from idb
+804D2E7: restored pseudocode from idb
+804D30A: restored microcode from idb
+804D30A: restored pseudocode from idb
+804D330: restored microcode from idb
+804D330: restored pseudocode from idb
+804D37C: restored microcode from idb
+804D37C: restored pseudocode from idb
+804D500: restored microcode from idb
+804D500: restored pseudocode from idb
+804D56F: restored microcode from idb
+804D56F: restored pseudocode from idb
+804D59F: restored microcode from idb
+804D59F: restored pseudocode from idb
+804D5EB: restored microcode from idb
+804D5EB: restored pseudocode from idb
+804D61C: restored microcode from idb
+804D61C: restored pseudocode from idb
+2024-11-21 16:27:57,568 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 502, b'Bad Gateway', [(b'Connection', b'close'), (b'Content-Length', b'0')])
+2024-11-21 16:27:57,568 - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 502 Bad Gateway"
+2024-11-21 16:27:57,568 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-11-21 16:27:57,568 - DEBUG - receive_response_body.complete
+2024-11-21 16:27:57,568 - DEBUG - response_closed.started
+2024-11-21 16:27:57,568 - DEBUG - response_closed.complete
+804D680: restored microcode from idb
+804D680: restored pseudocode from idb
+804D6A0: restored microcode from idb
+804D6A0: restored pseudocode from idb
+804D6D3: restored microcode from idb
+804D6D3: restored pseudocode from idb
+804D6F0: restored microcode from idb
+804D6F0: restored pseudocode from idb
+804D700: restored microcode from idb
+804D700: restored pseudocode from idb
+804D7B1: restored microcode from idb
+804D7B1: restored pseudocode from idb
+804D82F: restored microcode from idb
+804D82F: restored pseudocode from idb
+804D86A: restored microcode from idb
+804D86A: restored pseudocode from idb
+804D8A0: restored microcode from idb
+804D8A0: restored pseudocode from idb
+804D8DE: restored microcode from idb
+804D8DE: restored pseudocode from idb
+804D91F: restored microcode from idb
+804D91F: restored pseudocode from idb
+804D9F2: restored microcode from idb
+804D9F2: restored pseudocode from idb
+804DBAF: restored microcode from idb
+804DBAF: restored pseudocode from idb
+804DD84: restored microcode from idb
+804DD84: restored pseudocode from idb
+804DE10: restored microcode from idb
+804DE10: restored pseudocode from idb
+804DE34: restored microcode from idb
+804DE34: restored pseudocode from idb
+804DE54: restored microcode from idb
+804DE54: restored pseudocode from idb
+804DE62: restored microcode from idb
+804DE62: restored pseudocode from idb
+804DE73: restored microcode from idb
+804DE73: restored pseudocode from idb
+804DEE0: restored microcode from idb
+804DEE0: restored pseudocode from idb
+804DF34: restored microcode from idb
+804DF34: restored pseudocode from idb
+804DF51: restored microcode from idb
+804DF51: restored pseudocode from idb
+804E034: restored microcode from idb
+804E034: restored pseudocode from idb
+804E06D: restored microcode from idb
+804E06D: restored pseudocode from idb
+804E19D: restored microcode from idb
+804E19D: restored pseudocode from idb
+804E21F: restored microcode from idb
+804E21F: restored pseudocode from idb
+804E341: restored microcode from idb
+804E341: restored pseudocode from idb
+804E3D2: restored microcode from idb
+804E3D2: restored pseudocode from idb
+dumping to json file D:\re_se\ReGPT\dataset\stripped\software_1.idb.json
+All done, exiting.
+D:\re_se\ReGPT\IDAPython\extract_features.py: module 'idc' has no attribute 'Exit'
+Traceback (most recent call last):
+  File "D:\software\IDA_Pro_7.7\IDA_Pro_7.7\python\3\ida_idaapi.py", line 580, in IDAPython_ExecScript
+    exec(code, g)
+  File "D:/re_se/ReGPT/IDAPython/extract_features.py", line 206, in <module>
+    main()
+  File "D:/re_se/ReGPT/IDAPython/extract_features.py", line 204, in main
+    idc.Exit()
+  File "D:\software\IDA_Pro_7.7\IDA_Pro_7.7\python\3\ida_ida.py", line 4199, in __getattribute__
+    return getattr(self.orig, name)
+AttributeError: module 'idc' has no attribute 'Exit'
+ -> OK
+Flushing buffers, please wait...ok
+Keypatch: configuration is saved to C:\Users\yangs\AppData\Roaming\Hex-Rays\IDA Pro\keypatch.cfg
+Unloading IDP module D:\software\IDA_Pro_7.7\IDA_Pro_7.7\procs\pc.dll...BinDiff 7 (@377901646, Jun  7 2021), (c)2004-2011 zynamics GmbH, (c)2011-2021 Google LLC.
+BinExport 12 (@377901646, Jun  7 2021), (c)2004-2011 zynamics GmbH, (c)2011-2021 Google LLC.
+                                  ...:::::....                                  
+                          .:-=+**###%%%%%%%%###**+=-:.                          
+                      .-+*#%%%%%#**#*+====+*#**#%%%%%#*+-:                      
+               .  .-+#%%%%%%#*-:::. .-====-. .:::-+##%%%%%#+-.                  
+          .      =#%%%%%%#+:::-*#= -###**###= =#*-:::+#%%%%%%#=      .          
+         :=====-::::-=++-: :-:-+#*-::=*--*=::-*#*-::: :-++=:::::-=====:         
+        ==-::::--=+++-  -=++++-.:=**+ .+*: =**+:.-++++=-  -+++==-::::-==        
+       .%%##**+=-:..:..===+-=***=::::-*--*-::::=***=-+===..:..:-=+**##%%. =     
+     : .%%##**++***=  -=-=:.++++**+++++**+++++**++++.:=-=-  =***++**##%%. =     
+    .  .%%%%#*++++- : .-=:.=-==+=.:::::..:::::.=+=--=.:==. : -++++*#%%%%.  .    
+   . .: *%%%%#++=..+*=... =:::::. +++==..-==++ ..::::= ..:=*+..=++#%%%@* :. .   
+  . .#+ =@%%%#*- :**+++++..-:..-==-::.:-=:.::-==-..:-:.+++++**: =*#%%%@= *#. .  
+    *##..%%%#*- :+++++++++: .==-:-:: :-::-: ::-:-==: :=++++++++: -*#%%%..##*    
+   =%=-= =%*+= .++++++++*##: ::::::=- .... -=:::::- :##*++++++++. =+*%= +-=%+   
+: .%%* #: +#+. =++++*#%@@@@@+:..:::::.-::-.:::::..:+@@@@@%#*+=++= .+#= -#.+%%: .
+  +%#+ *#: =- -+++*%@@%*++++#%%*+==. :::::: .==+*%%#++++*%@@%*+++- -= -#* =%%+  
+  #%-.=.=#=  .+++#@@*-::.  ...=#@@@%*=----=*%@@@#=...  .::-*@@#+++.  =%-:+:-%#  
+ .#%+:::+%%- -++#@@= -@@* -%#. .*@@@@@@@@@@@@@@*  .#%- *@@- =@@#++- -%%+:-:+%#. 
+ :##%+ *%#%: =+*@@* .::-.  .. . .%@@@@@@@@@@@@%. : ..  .-::. #@@*+= :%#%* +%#%: 
+ :##-:+:=%#. =+#@@* ::       .:. %@@@@@@@@@@@@% .:        -. *@@#== :%%-:+:-##: 
+ .#%=:-:+%%: -+#@@%: ++-----=+: =@@@@@@@@@@@@@@= -+=-----++ :%@@#+- :%%=:-:=##. 
+  *%=:-:+%%+ :##%@@%-.-+++++=::+@@@@@******@@@@%+.:=+++++-.=%@@%#*. +%#=:-:=%*  
+. -%::+:-%%#: =##%@@@%+=----=*%@@@%%@*-  -*@%%@@@%*=----=+%@@@%##= -#%%-:+::%- .
+   *#*+*###%#: =##%%@%**%@@@@@@@@@+.+*+::=*+.*@@@@@@@@@%**%@%%##= -#####*+*#*  =
+ . :#%-:--.*%#= :*##%##@@@@@@@@@@@@#++*%%*++#@@@@@@@@@@@@##%##+. =%#.--::#%#: . 
+    :-:=++-:=#%*- :+###%%%%%%@@@@@@@@@@@@@@@@@@@@@@%%%%%####+: -#%+::##*:-=-    
+     .-::::=-.=+**=..:=*#####%%%%%%%%%%%%%%%%%%%%%%#####*=:..=**+::**=-=**.     
+      .*##= =-- -%%#*=: .:=+**####################**+-:. :=*#%#.-+#* =*=.:      
+       .=+::=:: -%##%*: :::.. ..::---======---::.. ..::: :*%###.:-=*:-=:        
+      .   .:.-**####+ .-=-:..:---:     --    .:---:..:=--. +%##**+::=-   .      
+         .  =######+ .---. +%@@@@@%+. -%%= .+%@@@@@%+ .---. +####%#-            
+             :=*##*. ---: -%%%@@@@*%- +%%+ =%*@@@%%%%- :--- .#%#*=:             
+                :=: .:::.  -====+= .  ====  . =+====-  ::::. :=:                
+           .::::..:::::.:::......:::::...:::::.....:::::.::::::.::::.           
+         .---::=+=::::-=-:-=+++=:::::-++-::::=++++-::::=+=::::-=-::---.         
+      .  :....+%#%-...*@-.=@#++##=...#%#%:...#@+=+%*..-%#%+...-@*.....:  .      
+         ....+@*-%@-..*@- =@+  :@%..*@+=@%:..#@++*%+.-@%-*@+..-@*......         
+      .  ...=@*+++#%-.*@- -@#+*##-.*%++++%#..#%---:.-%#+++*@=.-@%**+...  .      
+          ..::.....-:.::...:---:...::....:-..::.....:-.....::..:---:..          
+        .                                                              .        
+
+2024-11-21 16:30:50,283 - DEBUG - aiDAPal: aidapal False
+2024-11-21 16:30:50,283 - DEBUG - aiDAPal: aidapal True
+2024-11-21 16:30:50,283 - DEBUG - aiDAPal: data analysis aidapal True
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal.py: undefined function __plugins__idapal.PLUGIN_ENTRY
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal_qt_interface.py: undefined function __plugins__idapal_qt_interface.PLUGIN_ENTRY
+IDA has found an unpacked version of database: D:\re_se\ReGPT\dataset\stripped\software_1.idb
+on the disk.
+
+Should we proceed with the unpacked files?
+ -> Pro~c~eed with unpacked base
+
+  bytes   pages size description
+--------- ----- ---- --------------------------------------------
+   647168    79 8192 allocating memory for b-tree...
+   163840    20 8192 allocating memory for virtual array...
+   262144    32 8192 allocating memory for name pointers...
+-----------------------------------------------------------------
+  1073152            total memory allocated
+
+Loading processor module D:\software\IDA_Pro_7.7\IDA_Pro_7.7\procs\pc.dll for metapc...Initializing processor module metapc...OK
+Loading type libraries...
+Autoanalysis subsystem has been initialized.
+                                  ...:::::....                                  
+                          .:-=+**###%%%%%%%%###**+=-:.                          
+                      .-+*#%%%%%#**#*+====+*#**#%%%%%#*+-:                      
+               .  .-+#%%%%%%#*-:::. .-====-. .:::-+##%%%%%#+-.                  
+          .      =#%%%%%%#+:::-*#= -###**###= =#*-:::+#%%%%%%#=      .          
+         :=====-::::-=++-: :-:-+#*-::=*--*=::-*#*-::: :-++=:::::-=====:         
+        ==-::::--=+++-  -=++++-.:=**+ .+*: =**+:.-++++=-  -+++==-::::-==        
+       .%%##**+=-:..:..===+-=***=::::-*--*-::::=***=-+===..:..:-=+**##%%. =     
+     : .%%##**++***=  -=-=:.++++**+++++**+++++**++++.:=-=-  =***++**##%%. =     
+    .  .%%%%#*++++- : .-=:.=-==+=.:::::..:::::.=+=--=.:==. : -++++*#%%%%.  .    
+   . .: *%%%%#++=..+*=... =:::::. +++==..-==++ ..::::= ..:=*+..=++#%%%@* :. .   
+  . .#+ =@%%%#*- :**+++++..-:..-==-::.:-=:.::-==-..:-:.+++++**: =*#%%%@= *#. .  
+    *##..%%%#*- :+++++++++: .==-:-:: :-::-: ::-:-==: :=++++++++: -*#%%%..##*    
+   =%=-= =%*+= .++++++++*##: ::::::=- .... -=:::::- :##*++++++++. =+*%= +-=%+   
+: .%%* #: +#+. =++++*#%@@@@@+:..:::::.-::-.:::::..:+@@@@@%#*+=++= .+#= -#.+%%: .
+  +%#+ *#: =- -+++*%@@%*++++#%%*+==. :::::: .==+*%%#++++*%@@%*+++- -= -#* =%%+  
+  #%-.=.=#=  .+++#@@*-::.  ...=#@@@%*=----=*%@@@#=...  .::-*@@#+++.  =%-:+:-%#  
+ .#%+:::+%%- -++#@@= -@@* -%#. .*@@@@@@@@@@@@@@*  .#%- *@@- =@@#++- -%%+:-:+%#. 
+ :##%+ *%#%: =+*@@* .::-.  .. . .%@@@@@@@@@@@@%. : ..  .-::. #@@*+= :%#%* +%#%: 
+ :##-:+:=%#. =+#@@* ::       .:. %@@@@@@@@@@@@% .:        -. *@@#== :%%-:+:-##: 
+ .#%=:-:+%%: -+#@@%: ++-----=+: =@@@@@@@@@@@@@@= -+=-----++ :%@@#+- :%%=:-:=##. 
+  *%=:-:+%%+ :##%@@%-.-+++++=::+@@@@@******@@@@%+.:=+++++-.=%@@%#*. +%#=:-:=%*  
+. -%::+:-%%#: =##%@@@%+=----=*%@@@%%@*-  -*@%%@@@%*=----=+%@@@%##= -#%%-:+::%- .
+   *#*+*###%#: =##%%@%**%@@@@@@@@@+.+*+::=*+.*@@@@@@@@@%**%@%%##= -#####*+*#*  =
+ . :#%-:--.*%#= :*##%##@@@@@@@@@@@@#++*%%*++#@@@@@@@@@@@@##%##+. =%#.--::#%#: . 
+    :-:=++-:=#%*- :+###%%%%%%@@@@@@@@@@@@@@@@@@@@@@%%%%%####+: -#%+::##*:-=-    
+     .-::::=-.=+**=..:=*#####%%%%%%%%%%%%%%%%%%%%%%#####*=:..=**+::**=-=**.     
+      .*##= =-- -%%#*=: .:=+**####################**+-:. :=*#%#.-+#* =*=.:      
+       .=+::=:: -%##%*: :::.. ..::---======---::.. ..::: :*%###.:-=*:-=:        
+      .   .:.-**####+ .-=-:..:---:     --    .:---:..:=--. +%##**+::=-   .      
+         .  =######+ .---. +%@@@@@%+. -%%= .+%@@@@@%+ .---. +####%#-            
+             :=*##*. ---: -%%%@@@@*%- +%%+ =%*@@@%%%%- :--- .#%#*=:             
+                :=: .:::.  -====+= .  ====  . =+====-  ::::. :=:                
+           .::::..:::::.:::......:::::...:::::.....:::::.::::::.::::.           
+         .---::=+=::::-=-:-=+++=:::::-++-::::=++++-::::=+=::::-=-::---.         
+      .  :....+%#%-...*@-.=@#++##=...#%#%:...#@+=+%*..-%#%+...-@*.....:  .      
+         ....+@*-%@-..*@- =@+  :@%..*@+=@%:..#@++*%+.-@%-*@+..-@*......         
+      .  ...=@*+++#%-.*@- -@#+*##-.*%++++%#..#%---:.-%#+++*@=.-@%**+...  .      
+          ..::.....-:.::...:---:...::....:-..::.....:-.....::..:---:..          
+        .                                                              .        
+
+2024-11-21 16:30:50,350 - DEBUG - aiDAPal: aidapal False
+2024-11-21 16:30:50,350 - DEBUG - aiDAPal: aidapal True
+2024-11-21 16:30:50,350 - DEBUG - aiDAPal: data analysis aidapal True
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal.py: undefined function __plugins__idapal.PLUGIN_ENTRY
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal_qt_interface.py: undefined function __plugins__idapal_qt_interface.PLUGIN_ENTRY
+Database for file 'software_1' has been loaded.
+Hex-Rays Decompiler plugin has been loaded (v7.7.0.220118)
+  License: 57-338D-4B59-97 Hex-Rays SA (99 users)
+  The hotkeys are F5: decompile, Ctrl-F5: decompile all.
+
+  Please check the Edit/Plugins menu for more information.
+================================================================================
+Findcrypt v0.2 by David BERARD, 2017
+Findcrypt search shortcut key is Ctrl-Alt-F
+Global rules in D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\findcrypt3.rules
+User-defined rules in C:\Users\yangs\AppData\Roaming\Hex-Rays\IDA Pro\plugins\findcrypt-yara/*.rules
+================================================================================
+FindFunc (x86/x64) 1.4 by feber loaded
+2024-11-21 16:30:50,372 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-11-21 16:30:50,375 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+2024-11-21 16:30:50,379 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-11-21 16:30:50,379 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+2024-11-21 16:30:50,384 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-11-21 16:30:50,384 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+2024-11-21 16:30:50,392 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-11-21 16:30:50,392 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+                                  ...:::::....                                  
+                          .:-=+**###%%%%%%%%###**+=-:.                          
+                      .-+*#%%%%%#**#*+====+*#**#%%%%%#*+-:                      
+               .  .-+#%%%%%%#*-:::. .-====-. .:::-+##%%%%%#+-.                  
+          .      =#%%%%%%#+:::-*#= -###**###= =#*-:::+#%%%%%%#=      .          
+         :=====-::::-=++-: :-:-+#*-::=*--*=::-*#*-::: :-++=:::::-=====:         
+        ==-::::--=+++-  -=++++-.:=**+ .+*: =**+:.-++++=-  -+++==-::::-==        
+       .%%##**+=-:..:..===+-=***=::::-*--*-::::=***=-+===..:..:-=+**##%%. =     
+     : .%%##**++***=  -=-=:.++++**+++++**+++++**++++.:=-=-  =***++**##%%. =     
+    .  .%%%%#*++++- : .-=:.=-==+=.:::::..:::::.=+=--=.:==. : -++++*#%%%%.  .    
+   . .: *%%%%#++=..+*=... =:::::. +++==..-==++ ..::::= ..:=*+..=++#%%%@* :. .   
+  . .#+ =@%%%#*- :**+++++..-:..-==-::.:-=:.::-==-..:-:.+++++**: =*#%%%@= *#. .  
+    *##..%%%#*- :+++++++++: .==-:-:: :-::-: ::-:-==: :=++++++++: -*#%%%..##*    
+   =%=-= =%*+= .++++++++*##: ::::::=- .... -=:::::- :##*++++++++. =+*%= +-=%+   
+: .%%* #: +#+. =++++*#%@@@@@+:..:::::.-::-.:::::..:+@@@@@%#*+=++= .+#= -#.+%%: .
+  +%#+ *#: =- -+++*%@@%*++++#%%*+==. :::::: .==+*%%#++++*%@@%*+++- -= -#* =%%+  
+  #%-.=.=#=  .+++#@@*-::.  ...=#@@@%*=----=*%@@@#=...  .::-*@@#+++.  =%-:+:-%#  
+ .#%+:::+%%- -++#@@= -@@* -%#. .*@@@@@@@@@@@@@@*  .#%- *@@- =@@#++- -%%+:-:+%#. 
+ :##%+ *%#%: =+*@@* .::-.  .. . .%@@@@@@@@@@@@%. : ..  .-::. #@@*+= :%#%* +%#%: 
+ :##-:+:=%#. =+#@@* ::       .:. %@@@@@@@@@@@@% .:        -. *@@#== :%%-:+:-##: 
+ .#%=:-:+%%: -+#@@%: ++-----=+: =@@@@@@@@@@@@@@= -+=-----++ :%@@#+- :%%=:-:=##. 
+  *%=:-:+%%+ :##%@@%-.-+++++=::+@@@@@******@@@@%+.:=+++++-.=%@@%#*. +%#=:-:=%*  
+. -%::+:-%%#: =##%@@@%+=----=*%@@@%%@*-  -*@%%@@@%*=----=+%@@@%##= -#%%-:+::%- .
+   *#*+*###%#: =##%%@%**%@@@@@@@@@+.+*+::=*+.*@@@@@@@@@%**%@%%##= -#####*+*#*  =
+ . :#%-:--.*%#= :*##%##@@@@@@@@@@@@#++*%%*++#@@@@@@@@@@@@##%##+. =%#.--::#%#: . 
+    :-:=++-:=#%*- :+###%%%%%%@@@@@@@@@@@@@@@@@@@@@@%%%%%####+: -#%+::##*:-=-    
+     .-::::=-.=+**=..:=*#####%%%%%%%%%%%%%%%%%%%%%%#####*=:..=**+::**=-=**.     
+      .*##= =-- -%%#*=: .:=+**####################**+-:. :=*#%#.-+#* =*=.:      
+       .=+::=:: -%##%*: :::.. ..::---======---::.. ..::: :*%###.:-=*:-=:        
+      .   .:.-**####+ .-=-:..:---:     --    .:---:..:=--. +%##**+::=-   .      
+         .  =######+ .---. +%@@@@@%+. -%%= .+%@@@@@%+ .---. +####%#-            
+             :=*##*. ---: -%%%@@@@*%- +%%+ =%*@@@%%%%- :--- .#%#*=:             
+                :=: .:::.  -====+= .  ====  . =+====-  ::::. :=:                
+           .::::..:::::.:::......:::::...:::::.....:::::.::::::.::::.           
+         .---::=+=::::-=-:-=+++=:::::-++-::::=++++-::::=+=::::-=-::---.         
+      .  :....+%#%-...*@-.=@#++##=...#%#%:...#@+=+%*..-%#%+...-@*.....:  .      
+         ....+@*-%@-..*@- =@+  :@%..*@+=@%:..#@++*%+.-@%-*@+..-@*......         
+      .  ...=@*+++#%-.*@- -@#+*##-.*%++++%#..#%---:.-%#+++*@=.-@%**+...  .      
+          ..::.....-:.::...:---:...::....:-..::.....:-.....::..:---:..          
+        .                                                              .        
+
+2024-11-21 16:30:50,397 - DEBUG - aiDAPal: aidapal False
+2024-11-21 16:30:50,397 - DEBUG - aiDAPal: aidapal True
+2024-11-21 16:30:50,397 - DEBUG - aiDAPal: data analysis aidapal True
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal.py: undefined function __plugins__idapal.PLUGIN_ENTRY
+D:\software\IDA_Pro_7.7\IDA_Pro_7.7\plugins\idapal_qt_interface.py: undefined function __plugins__idapal_qt_interface.PLUGIN_ENTRY
+2024-11-21 16:30:50,399 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2024-11-21 16:30:50,399 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+================================================================================
+2024-11-21 16:30:50,406 - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+Keypatch v2.2 (c) Nguyen Anh Quynh & Thanh Nguyen, 2018
+Keypatch is using Keystone v0.9.2
+Keypatch Patcher's shortcut key is Ctrl-Alt-K
+Use the same hotkey Ctrl-Alt-K to open 'Fill Range' window on a selected range of code
+To revert (undo) the last patching, choose menu Edit | Keypatch | Undo last patching
+Keypatch Search is available from menu Edit | Keypatch | Search
+Find more information about Keypatch at http://keystone-engine.org/keypatch
+================================================================================
+2024-11-21 16:30:50,407 - DEBUG - load_verify_locations cafile='D:\\software\\anaconda\\Library\\ssl\\cacert.pem'
+LazyIDA (v1.0.0.3) plugin has been loaded.
+
+ IDA Strong Charset Code View 0.1 
+ Enable/Disable Strong Charset View Use 'shift + a' 
+ IDA Strong Charset Code View Plugin By 微笑一刀 
+
+2024-11-21 16:30:50,413 - DEBUG - connect_tcp.started host='127.0.0.1' port=7890 local_address=None timeout=None socket_options=None
+2024-11-21 16:30:50,414 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000022E69012970>
+2024-11-21 16:30:50,414 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2024-11-21 16:30:50,414 - DEBUG - send_request_headers.complete
+2024-11-21 16:30:50,414 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2024-11-21 16:30:50,414 - DEBUG - send_request_body.complete
+2024-11-21 16:30:50,414 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2024-11-21 16:30:50,415 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 502, b'Bad Gateway', [(b'Connection', b'close'), (b'Content-Length', b'0')])
+2024-11-21 16:30:50,415 - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 502 Bad Gateway"
+2024-11-21 16:30:50,415 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2024-11-21 16:30:50,415 - DEBUG - receive_response_body.complete
+2024-11-21 16:30:50,415 - DEBUG - response_closed.started
+2024-11-21 16:30:50,415 - DEBUG - response_closed.complete
+Waiting for autoanalysis...
+8049950: restored microcode from idb
+8049950: restored pseudocode from idb
+804A008: restored microcode from idb
+804A008: restored pseudocode from idb
+804A02A: restored microcode from idb
+804A02A: restored pseudocode from idb
+804A02E: restored microcode from idb
+804A02E: restored pseudocode from idb
+804A08C: restored microcode from idb
+804A08C: restored pseudocode from idb
+804A0EF: restored microcode from idb
+804A0EF: restored pseudocode from idb
+804A125: restored microcode from idb
+804A125: restored pseudocode from idb
+804A348: restored microcode from idb
+804A348: restored pseudocode from idb
+804A403: restored microcode from idb
+804A403: restored pseudocode from idb
+804A42D: restored microcode from idb
+804A42D: restored pseudocode from idb
+804A444: restored microcode from idb
+804A444: restored pseudocode from idb
+804A510: restored microcode from idb
+804A510: restored pseudocode from idb
+804A6B9: restored microcode from idb
+804A6B9: restored pseudocode from idb
+804A70A: restored microcode from idb
+804A70A: restored pseudocode from idb
+804A72A: restored microcode from idb
+804A72A: restored pseudocode from idb
+804A75C: restored microcode from idb
+804A75C: restored pseudocode from idb
+804A777: restored microcode from idb
+804A777: restored pseudocode from idb
+804A7BB: restored microcode from idb
+804A7BB: restored pseudocode from idb
+804A7F0: restored microcode from idb
+804A7F0: restored pseudocode from idb
+804A804: restored microcode from idb
+804A804: restored pseudocode from idb
+804A82E: restored microcode from idb
+804A82E: restored pseudocode from idb
+804A91C: restored microcode from idb
+804A91C: restored pseudocode from idb
+804A9B9: restored microcode from idb
+804A9B9: restored pseudocode from idb
+804AA1D: restored microcode from idb
+804AA1D: restored pseudocode from idb
+804AA54: restored microcode from idb
+804AA54: restored pseudocode from idb
+804AC14: restored microcode from idb
+804AC14: restored pseudocode from idb
+804AD7E: restored microcode from idb
+804AD7E: restored pseudocode from idb
+804AD90: restored microcode from idb
+804AD90: restored pseudocode from idb
+804B309: restored microcode from idb
+804B309: restored pseudocode from idb
+804B391: restored microcode from idb
+804B391: restored pseudocode from idb
+804B39E: restored microcode from idb
+804B39E: restored pseudocode from idb
+804B47B: restored microcode from idb
+804B47B: restored pseudocode from idb
+804B488: restored microcode from idb
+804B488: restored pseudocode from idb
+804B5AE: restored microcode from idb
+804B5AE: restored pseudocode from idb
+804B5F8: restored microcode from idb
+804B5F8: restored pseudocode from idb
+804B63A: restored microcode from idb
+804B63A: restored pseudocode from idb
+804B6CC: restored microcode from idb
+804B6CC: restored pseudocode from idb
+804B799: restored microcode from idb
+804B799: restored pseudocode from idb
+804B7B3: restored microcode from idb
+804B7B3: restored pseudocode from idb
+804B7E6: restored microcode from idb
+804B7E6: restored pseudocode from idb
+804B89A: restored microcode from idb
+804B89A: restored pseudocode from idb
+804B941: restored microcode from idb
+804B941: restored pseudocode from idb
+804B9E6: restored microcode from idb
+804B9E6: restored pseudocode from idb
+804BA46: restored microcode from idb
+804BA46: restored pseudocode from idb
+804BA75: restored microcode from idb
+804BA75: restored pseudocode from idb
+804BABF: restored microcode from idb
+804BABF: restored pseudocode from idb
+804BADF: restored microcode from idb
+804BADF: restored pseudocode from idb
+804BB33: restored microcode from idb
+804BB33: restored pseudocode from idb
+804BB4E: restored microcode from idb
+804BB4E: restored pseudocode from idb
+804BB69: restored microcode from idb
+804BB69: restored pseudocode from idb
+804BB7E: restored microcode from idb
+804BB7E: restored pseudocode from idb
+804BBC0: restored microcode from idb
+804BBC0: restored pseudocode from idb
+804BC25: restored microcode from idb
+804BC25: restored pseudocode from idb
+804BC94: restored microcode from idb
+804BC94: restored pseudocode from idb
+804BCC7: restored microcode from idb
+804BCC7: restored pseudocode from idb
+804BCDB: restored microcode from idb
+804BCDB: restored pseudocode from idb
+804BD0F: restored microcode from idb
+804BD0F: restored pseudocode from idb
+804BEFD: restored microcode from idb
+804BEFD: restored pseudocode from idb
+804BF36: restored microcode from idb
+804BF36: restored pseudocode from idb
+804BFBF: restored microcode from idb
+804BFBF: restored pseudocode from idb
+804BFFD: restored microcode from idb
+804BFFD: restored pseudocode from idb
+804C0B3: restored microcode from idb
+804C0B3: restored pseudocode from idb
+804C0E3: restored microcode from idb
+804C0E3: restored pseudocode from idb
+804C4F3: restored microcode from idb
+804C4F3: restored pseudocode from idb
+804C5B7: restored microcode from idb
+804C5B7: restored pseudocode from idb
+804CBD1: restored microcode from idb
+804CBD1: restored pseudocode from idb
+804CBEF: restored microcode from idb
+804CBEF: restored pseudocode from idb
+804CDEC: restored microcode from idb
+804CDEC: restored pseudocode from idb
+804CF0C: restored microcode from idb
+804CF0C: restored pseudocode from idb
+804D09A: restored microcode from idb
+804D09A: restored pseudocode from idb
+804D157: restored microcode from idb
+804D157: restored pseudocode from idb
+804D1F1: restored microcode from idb
+804D1F1: restored pseudocode from idb
+804D26E: restored microcode from idb
+804D26E: restored pseudocode from idb
+804D2E7: restored microcode from idb
+804D2E7: restored pseudocode from idb
+804D30A: restored microcode from idb
+804D30A: restored pseudocode from idb
+804D330: restored microcode from idb
+804D330: restored pseudocode from idb
+804D37C: restored microcode from idb
+804D37C: restored pseudocode from idb
+804D500: restored microcode from idb
+804D500: restored pseudocode from idb
+804D56F: restored microcode from idb
+804D56F: restored pseudocode from idb
+804D59F: restored microcode from idb
+804D59F: restored pseudocode from idb
+804D5EB: restored microcode from idb
+804D5EB: restored pseudocode from idb
+804D61C: restored microcode from idb
+804D61C: restored pseudocode from idb
+804D680: restored microcode from idb
+804D680: restored pseudocode from idb
+804D6A0: restored microcode from idb
+804D6A0: restored pseudocode from idb
+804D6D3: restored microcode from idb
+804D6D3: restored pseudocode from idb
+804D6F0: restored microcode from idb
+804D6F0: restored pseudocode from idb
+804D700: restored microcode from idb
+804D700: restored pseudocode from idb
+804D7B1: restored microcode from idb
+804D7B1: restored pseudocode from idb
+804D82F: restored microcode from idb
+804D82F: restored pseudocode from idb
+804D86A: restored microcode from idb
+804D86A: restored pseudocode from idb
+804D8A0: restored microcode from idb
+804D8A0: restored pseudocode from idb
+804D8DE: restored microcode from idb
+804D8DE: restored pseudocode from idb
+804D91F: restored microcode from idb
+804D91F: restored pseudocode from idb
+804D9F2: restored microcode from idb
+804D9F2: restored pseudocode from idb
+804DBAF: restored microcode from idb
+804DBAF: restored pseudocode from idb
+804DD84: restored microcode from idb
+804DD84: restored pseudocode from idb
+804DE10: restored microcode from idb
+804DE10: restored pseudocode from idb
+804DE34: restored microcode from idb
+804DE34: restored pseudocode from idb
+804DE54: restored microcode from idb
+804DE54: restored pseudocode from idb
+804DE62: restored microcode from idb
+804DE62: restored pseudocode from idb
+804DE73: restored microcode from idb
+804DE73: restored pseudocode from idb
+804DEE0: restored microcode from idb
+804DEE0: restored pseudocode from idb
+804DF34: restored microcode from idb
+804DF34: restored pseudocode from idb
+804DF51: restored microcode from idb
+804DF51: restored pseudocode from idb
+804E034: restored microcode from idb
+804E034: restored pseudocode from idb
+804E06D: restored microcode from idb
+804E06D: restored pseudocode from idb
+804E19D: restored microcode from idb
+804E19D: restored pseudocode from idb
+804E21F: restored microcode from idb
+804E21F: restored pseudocode from idb
+804E341: restored microcode from idb
+804E341: restored pseudocode from idb
+804E3D2: restored microcode from idb
+804E3D2: restored pseudocode from idb
+dumping to json file D:\re_se\ReGPT\dataset\stripped\software_1.idb.json
+All done, exiting.
+Flushing buffers, please wait...ok
+Keypatch: configuration is saved to C:\Users\yangs\AppData\Roaming\Hex-Rays\IDA Pro\keypatch.cfg
+Unloading IDP module D:\software\IDA_Pro_7.7\IDA_Pro_7.7\procs\pc.dll...

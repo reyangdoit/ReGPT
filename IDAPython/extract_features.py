@@ -21,11 +21,13 @@ import json
 import ida_ida
 import ida_auto
 import ida_loader
+import ida_auto
 import ida_hexrays
 import ida_idp
 import ida_entry
 import ida_kernwin
 
+import sys
 
 # ============================Strings =======================================
 
@@ -111,7 +113,7 @@ def generate_call_graph():
         if is_import_function(func_ea):
             continue
         # Get the function object
-        print(f"From func: {hex(func_ea)}")
+        # print(f"From func: {hex(func_ea)}")
         graph[func_ea] =list(get_all_callee_addrs(func_ea))
 
     return graph
@@ -143,14 +145,14 @@ def init_hexrays():
         return False
 
 def decompile_func(ea):
-    ida_kernwin.msg("Decompiling at: %X..." % ea)
+    # ida_kernwin.msg("Decompiling at: %X..." % ea)
     try:
         cf = ida_hexrays.decompile(ea)
         if cf:
-            ida_kernwin.msg("OK\n")
+            # ida_kernwin.msg("OK\n")
             return str(cf)
         else:
-            ida_kernwin.msg("failed!\n")
+            # ida_kernwin.msg("failed!\n")
             return ("decompilation failure at %X!\n" % ea)
     except:
         return ("decompilation failure at %X!\n" % ea)
@@ -166,8 +168,12 @@ def main():
     print("Waiting for autoanalysis...")
     ida_auto.auto_wait()
     if init_hexrays():
-        idbpath = idc.get_idb_path()
-        cpath = idbpath[:-4] + ".json"
+        args = idc.ARGV
+        if len(args) > 1:
+            cpath = args[1]
+        else:
+            idbpath = idc.get_idb_path()
+            cpath = idbpath[:-4] + ".json"
         features = {"call_graph":{}, "pseudocode":{}, "strings":None}
 
         features['imported_function'] = get_plt_functions()
@@ -193,8 +199,9 @@ def main():
         with open(cpath, "w") as outfile:
             json.dump(features, outfile, indent=4)
         
-    if ida_kernwin.cvar.batch:
+    if ida_auto.is_auto_enabled():
         print("All done, exiting.")
-        ida_pro.qexit(0)
+        os._exit(0) # ida_pro.qexit(0) would not close the IDA Pro window
+        # ida_pro.qexit(0)
 
 main()
