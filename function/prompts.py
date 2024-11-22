@@ -141,7 +141,7 @@ E. 示例
 }
 
 
-请根据以上说明分析输入数据，并仅输出符合模板的json字符串内容，注意只输出json的原始字符串内容即可，不需要输出markdown格式。
+请根据以上说明分析输入数据，并仅输出符合模板的json字符串内容，**注意只输出json的原始字符串内容即可，不需要输出markdown格式**。
 """
 
 
@@ -225,3 +225,8 @@ System:
 
 User:
 """
+
+
+
+# for ollama predict name only 
+PROMPT_OLLAMA_NAME_ONLY = """Output a response in JSON format containing only the key "function_name" with the value as the predicted function name. Do not include any explanations, comments, or additional variables. Example output: {"function_name": "predicted_function_name"}."""

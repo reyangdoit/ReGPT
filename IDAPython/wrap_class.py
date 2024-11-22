@@ -39,6 +39,10 @@ class EXE_IDA_PYTHON:
             raise FileExistsError(f"bin file not found in {bin_path}")
         
         save_path = bin_path + ".json"
+
+        if os.path.exists(save_path):
+            print(f"binary feature file already exists in {save_path}")
+            return save_path
         
         # combine the command to execute
         command = [self._ida32, '-A', f'-S"{self._ida_python_script} {save_path}"', bin_path]

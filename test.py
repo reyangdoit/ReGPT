@@ -94,6 +94,6 @@ def test_predict_all():
 
 
 if __name__ == "__main__":
-  # test_aidapal()
-  test_predict_all()
+  test_aidapal()
+  # test_predict_all()
     

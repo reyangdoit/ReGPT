@@ -22,7 +22,7 @@ class OpenAI:
 
         self._client = openai.OpenAI(
             api_key=self._api_key,
-            base_url= model.config.get_config("OpenAI", "BASE_URL")
+            base_url= self._base_url
         )
 
     

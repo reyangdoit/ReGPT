@@ -20,7 +20,7 @@ To get a better decompilation result, this code applies several strategies:
 import model.chatgpt
 import logging
 import os
-from function.prompts import PROMPT_DEBUG, PROMPT_ONLY_FUNCTION_NAME
+from function.prompts import PROMPT_DEBUG, PROMPT_ONLY_FUNCTION_NAME, PROMPT_OLLAMA_NAME_ONLY
 import requests
 import json
 import numpy as np
@@ -32,16 +32,33 @@ ollama_url = "http://127.0.0.1:11434/api/generate"
 class NamePredictionWithAidapal:
     
     def __init__(self) -> None:
-        pass
+        self._prompt = PROMPT_OLLAMA_NAME_ONLY
 
     def predict(self, function_pseudocode: str, additional_info = None) -> str:
+
+        # 如果函数伪代码中包含"decompilation failure at"，则返回None
+        if "decompilation failure at" in function_pseudocode:
+            return None
+
+        # 定义url和请求头
         url = ollama_url
         headers = {"Content-Type": "application/json"}
-        payload = {"model": "aidapal", "prompt": function_pseudocode, "stream": False,"format":"json"}
-        res = requests.post(url, headers=headers, json=payload)
-        t = res.json()['response']
-        t = json.loads(t)
-        return t['function_name']
+        # 定义请求体
+        payload = {"model": "aidapal", "prompt": function_pseudocode + "\n" + self._prompt, "stream": False,"format":"json"}
+        # 发送post请求
+        try:
+            res = requests.post(url, headers=headers, json=payload, timeout=60)
+        # 解析返回的json数据
+            t = res.json()['response']
+            t = json.loads(t)
+        # 打印解析后的数据
+            print(t)
+        # 返回函数名
+            return t['function_name']
+        # 如果请求超时，则打印错误信息并返回None
+        except requests.exceptions.ReadTimeout as e:
+            print(str(e) + f"timeout when predicting function name for: {function_pseudocode}")
+            return None
 
 class SingleFunctionNamePrediction:
 
@@ -197,13 +214,17 @@ class RenameSoftwareFunctions:
         predict_res = {} # {addr : predicted_name}
         
         for func in tqdm(funcs, desc="Predicting Function Names"):
-            func_pseudocode = self._pseudocode[str(func)][2]
-            #print(func_pseudocode)
-            #print('\n\n\n')
-            func_pseudocode = self._update_func_names_in_pseudocode(func_pseudocode, predict_res=predict_res)
-            # replace the predicted function names in pseudocode.
-
-            predict_res[int(func)] = self._llm.predict(func_pseudocode)
+            func_addr = str(func)
+            if func_addr in self._pseudocode:
+                func_pseudocode = self._pseudocode[func_addr][2]
+                #print(func_pseudocode)
+                func_pseudocode = self._update_func_names_in_pseudocode(func_pseudocode, predict_res=predict_res)
+                # replace the predicted function names in pseudocode.
+                predicted_name = self._llm.predict(func_pseudocode)
+                if predicted_name:
+                    predict_res[int(func)] = predicted_name
+                else:
+                    predict_res[int(func)] = func_addr
             # 
         
         # print(predict_res)

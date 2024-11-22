@@ -5,7 +5,12 @@ __pycache__/
 
 # C extensions
 *.so
-
+*.id0
+*.id1
+*.id2
+*.idb
+*.nam
+*test*.py
 .vscode/
 
 # Distribution / packaging
