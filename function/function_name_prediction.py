@@ -206,6 +206,7 @@ class RenameSoftwareFunctions:
     def predict_all(self):
 
         if self._uc and os.path.exists(self._prediction_res_json_path):
+            print(f"Prediction result exists, loading from cache... {self._prediction_res_json_path}")
             with open(self._prediction_res_json_path, 'r') as f:
                 return json.load(f)
 

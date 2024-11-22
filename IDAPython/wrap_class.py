@@ -41,7 +41,7 @@ class EXE_IDA_PYTHON:
         save_path = bin_path + ".json"
 
         if os.path.exists(save_path):
-            print(f"binary feature file already exists in {save_path}")
+            print(f"Using cached feature file: {save_path}")
             return save_path
         
         # combine the command to execute

@@ -1,1 +1,55 @@
-null
+{
+    "modules": [
+        {
+            "Module_name": "文件操作模块",
+            "Module_functions": [
+                "openFileOrHandleErrorWrapper (134536672)",
+                "removeFileWithErrorHandling (134536232)",
+                "openFileAndLogError (134536171)",
+                "createTempFileWithErrorHandling (134536532)"
+            ],
+            "Module_description": "提供文件输入输出操作及其错误处理的支持，可能涉及文件打开、读取、写入和关闭，同时包含错误日志的记录。"
+        },
+        {
+            "Module_name": "内存管理模块",
+            "Module_functions": [
+                "allocate_and_handle_error (134535930)",
+                "allocateMemoryWithInitialization (134820945)",
+                "initialize_mapped_memory (134564008)",
+                "initializeAndAllocateMemoryWithCheckInputSource (134939948)"
+            ],
+            "Module_description": "初始化内存，分配内存块并处理错误，处理内存分配失败的境况。"
+        },
+        {
+            "Module_name": "网络通信模块",
+            "Module_functions": [
+                "send_packet_with_custom_header (134656745)",
+                "executeIoctlCommandWithErrorHandling (134546934)",
+                "createSocketAndBindToAddress (134956669)",
+                "initializeAndSendSocketData (134646446)"
+            ],
+            "Module_description": "负责网络通信的建立和维护，包含创建套接字、连接到网络、发送接收数据和处理协议。"
+        },
+        {
+            "Module_name": "日志和错误处理模块",
+            "Module_functions": [
+                "logErrorMessage (134534143)",
+                "customLogMessage (134668177)",
+                "formatAndLogMessageWithConditionIgnoringFile (134548440)",
+                "handleErrorAndLogMessage (134926430)"
+            ],
+            "Module_description": "提供日志记录和错误消息输出功能，方便对程序运行状态的监控和问题排查。"
+        },
+        {
+            "Module_name": "数据处理模块",
+            "Module_functions": [
+                "parseAndProcessInput (134702472)",
+                "parseAndValidateInput (134540545)",
+                "processCommandLineArguments (134643707)",
+                "handleInputAndLogErrors (134582477)"
+            ],
+            "Module_description": "执行数据的解析和格式化，处理输入数据和命令行参数，通常用于用户输入的解析和处理。"
+        }
+    ],
+    "Functionality_summary": "该程序是一个复杂的系统工具程序，提供了各种文件操作、内存管理、日志记录、网络通信和错误处理功能。主要功能模块包括：1.文件和内存管理模块，负责文件的创建、删除和内存的分配与释放。2.网络操作和协议处理模块，执行网络连接、数据传输和协议分析。3.日志和错误处理模块，记录状态、输出日志及处理异常情况。该程序提供的功能广泛，涉及系统配置、网络管理和数据处理，是一个多功能系统操作工具。"
+}

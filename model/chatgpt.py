@@ -3,6 +3,7 @@ import model.config
 import logging
 logger = logging.getLogger("chatgpt")
 
+
 class OpenAI:
 
     def __init__(self) -> None:
@@ -27,19 +28,29 @@ class OpenAI:
 
     
 
-    def query(self, query:str):
+    def query(self, query:str, system_prompt:str=None, response_format = None):
         
-        conversation =[ {
-            "role" : "user",
-            "content": query
-        } ]
+        if system_prompt:
+            conversation =[ {
+                "role" : "system",
+                "content": system_prompt
+            }, {
+                "role" : "user",
+                "content": query
+            } ]
+        else:
+            conversation =[ {
+                "role" : "user",
+                "content": query
+            } ]
 
-        response = self._client.chat.completions.create(
+        response = self._client.beta.chat.completions.parse(
             model=self._model_name,
             messages=conversation,
+            response_format=response_format
         )
         
-        return response.choices[0].message.content
+        return response.choices[0].message.parsed
 
 
 

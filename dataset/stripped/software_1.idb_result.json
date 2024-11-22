@@ -1,0 +1,69 @@
+{
+    "modules": [
+        {
+            "Module_name": "1. 初始化模块",
+            "Module_functions": [
+                "initializeHttpdConfig (134519120)",
+                "configure_sockets (134521924)",
+                "setGlobalVariable (134532049)",
+                "parseConfigFile (134521125)",
+                "initializeSocketAndBindAddress (134522128)",
+                "initialize_and_configure_socket (134523164)",
+                "initializeStreamAndSetTimeout (134533936)",
+                "initializeStream (134534684)"
+            ],
+            "Module_description": "负责初始化程序的相关配置，包括网络、回调函数、全局变量等环境的配置。"
+        },
+        {
+            "Module_name": "2. 请求处理模块",
+            "Module_functions": [
+                "processHttpRequest (134524304)",
+                "process_input_stream (134525705)",
+                "parseAndProcessHttpRequest (134523476)",
+                "parseConfigFile (134521125)",
+                "processAuthorizationHeader (134532876)",
+                "processHttpResponseHeadersAndLog (134535455)",
+                "handleHttpRequest (134530487)"
+            ],
+            "Module_description": "该模块用于处理HTTP请求和各种输入数据流，执行解析、格式化等操作。"
+        },
+        {
+            "Module_name": "3. 响应生成模块",
+            "Module_functions": [
+                "sendCustomHttpResponse (134523321)",
+                "sendHttpResponseHeaders (134522926)",
+                "sendHttpErrorResponse (134527822)"
+            ],
+            "Module_description": "负责生成和发送HTTP响应，包括错误响应处理。"
+        },
+        {
+            "Module_name": "4. 网络连接模块",
+            "Module_functions": [
+                "initializeSocketConnection (134526088)",
+                "processSocketConnection (134521672)"
+            ],
+            "Module_description": "处理和维护网络连接。"
+        },
+        {
+            "Module_name": "5. 异步处理模块",
+            "Module_functions": [
+                "sendSignalWithTimeout (134534867)",
+                "sendSignalAndSetTimeout (134534635)",
+                "processDataWithTimeout (134526522)",
+                "setUloopTimeout (134521901)"
+            ],
+            "Module_description": "执行异步或长时间运行的任务，通过信号或者超时机制进行控制。"
+        },
+        {
+            "Module_name": "6. 清理模块",
+            "Module_functions": [
+                "cleanup_and_close (134534400)",
+                "cleanup_resources (134535390)",
+                "close_and_delete_file_descriptor (134535328)",
+                "closeFileHandles (134521859)"
+            ],
+            "Module_description": "执行清理和释放资源的操作，确保程序资源在使用完后得以释放。"
+        }
+    ],
+    "Functionality_summary": "该程序主要用于处理HTTP请求和响应，涉及解析、修改、验证等多个功能模块。其流程包含初始化配置、解析HTTP请求、执行相应的处理并生成响应，以及在必要时进行资源清理和后续处理。入口函数为initializeHttpdConfig (134519120)，该函数通过多个子模块协作完成工作。"
+}

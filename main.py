@@ -14,7 +14,7 @@ logger.setLevel(logging.DEBUG)
 def main():
 
     # 定义目标二进制文件路径
-    TARGET_BIN = "D:\\re_se\\ReGPT\\dataset\\stripped\\software_2.idb"
+    TARGET_BIN = "D:\\re_se\\ReGPT\\dataset\\stripped\\software_1.idb"
 
     RESULT_FILE = TARGET_BIN + "_result.json"
 
@@ -40,8 +40,7 @@ def main():
     # save 结果
     with open(RESULT_FILE, "w", encoding="utf-8") as Result_file:
         # 将结果保存为JSON文件
-        res = json.dumps(res, indent=4)
-        Result_file.write(res)
+        Result_file.write(res.to_json().decode())
     
     print(f"Results saved in {RESULT_FILE}.")
 

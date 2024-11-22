@@ -82,18 +82,17 @@ def test_predict_all():
     from function import RenameSoftwareFunctions
     from function import Modularization
 
-    rsf = RenameSoftwareFunctions("./dataset/stripped/software_1.json")
+    rsf = RenameSoftwareFunctions("./dataset/stripped/software_1.idb.json")
     func_names = rsf.predict_all()
     call_graph = rsf.get_callgraph()
 
     modular = Modularization()
     res = modular.predict(name_dic=func_names, call_graph=call_graph)
-    print(res)
-
+    print(res.to_json())
 
 
 
 if __name__ == "__main__":
-  test_aidapal()
-  # test_predict_all()
+  # test_aidapal()
+  test_predict_all()
     
