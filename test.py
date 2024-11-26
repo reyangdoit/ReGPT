@@ -1,4 +1,4 @@
-from function import SingleFunctionNamePrediction
+from function import NamePrediction_openai
 import logging
 # 设置日志配置
 logging.basicConfig(
@@ -43,7 +43,7 @@ func_pseudocode = \
     """
 
 def test_singlefunctionprediction():
-    sfnp = SingleFunctionNamePrediction(name_only=True)
+    sfnp = NamePrediction_openai(name_only=True)
 
     
 
@@ -72,17 +72,17 @@ def test_singlefunctionprediction():
 
   
 def test_aidapal():
-    from function import NamePredictionWithAidapal
-    np = NamePredictionWithAidapal()
+    from function import NamePrediction_aidapal
+    np = NamePrediction_aidapal()
     name = np.predict(function_pseudocode=func_pseudocode)
     print(name)
 
 
 def test_predict_all():
-    from function import RenameSoftwareFunctions
+    from function import MODULARIZATION_PREDICTION
     from function import Modularization
 
-    rsf = RenameSoftwareFunctions("./dataset/stripped/software_1.idb.json")
+    rsf = MODULARIZATION_PREDICTION("./dataset/stripped/software_1.idb.json")
     func_names = rsf.predict_all()
     call_graph = rsf.get_callgraph()
 
@@ -93,6 +93,6 @@ def test_predict_all():
 
 
 if __name__ == "__main__":
-  # test_aidapal()
-  test_predict_all()
+  test_aidapal()
+  # test_predict_all()
     

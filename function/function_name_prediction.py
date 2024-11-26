@@ -26,12 +26,14 @@ import json
 import numpy as np
 import re
 from tqdm import tqdm
+import config
 
 # where ollama service is running
-ollama_url = "http://127.0.0.1:11434/api/generate"
-class NamePredictionWithAidapal:
+
+class NamePrediction_aidapal:
     
     def __init__(self) -> None:
+        self._ollama_url = config.get_config("OLLAMA", "URL")
         self._prompt = PROMPT_OLLAMA_NAME_ONLY
 
     def predict(self, function_pseudocode: str, additional_info = None) -> str:
@@ -41,26 +43,26 @@ class NamePredictionWithAidapal:
             return None
 
         # 定义url和请求头
-        url = ollama_url
+        url = self._ollama_url
         headers = {"Content-Type": "application/json"}
         # 定义请求体
-        payload = {"model": "aidapal", "prompt": function_pseudocode + "\n" + self._prompt, "stream": False,"format":"json"}
+        payload = {"model": "aidapal", "prompt": function_pseudocode + "\n" + self._prompt, "stream": False, "format":"json"}
         # 发送post请求
         try:
-            res = requests.post(url, headers=headers, json=payload, timeout=60)
+            res = requests.post(url, headers=headers, json=payload, timeout=120)
         # 解析返回的json数据
             t = res.json()['response']
             t = json.loads(t)
         # 打印解析后的数据
-            print(t)
+            # print(t)
         # 返回函数名
             return t['function_name']
         # 如果请求超时，则打印错误信息并返回None
-        except requests.exceptions.ReadTimeout as e:
+        except (requests.exceptions.ReadTimeout, json.decoder.JSONDecodeError, KeyError) as e:
             print(str(e) + f"timeout when predicting function name for: {function_pseudocode}")
             return None
 
-class SingleFunctionNamePrediction:
+class NamePrediction_openai:
 
     def __init__(self, name_only = True) -> None:
         self.LLM = model.chatgpt.OpenAI()
@@ -79,7 +81,7 @@ class SingleFunctionNamePrediction:
         return res
 
 
-class RenameSoftwareFunctions:
+class MODULARIZATION_PREDICTION:
 
     def __init__(self, software_datas, use_prediction_cache=True) -> None:
         '''
@@ -109,7 +111,7 @@ class RenameSoftwareFunctions:
             }
         '''
         self._uc = use_prediction_cache
-        self._llm = NamePredictionWithAidapal()
+        self._llm = NamePrediction_aidapal()
 
         self.software_dic = None
         with open(software_datas, 'r') as f:

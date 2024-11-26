@@ -1,2 +1,2 @@
 from function.module_prediction import *
-from function.function_name_prediction import SingleFunctionNamePrediction, NamePredictionWithAidapal, RenameSoftwareFunctions
+from function.function_name_prediction import NamePrediction_openai, NamePrediction_aidapal, MODULARIZATION_PREDICTION

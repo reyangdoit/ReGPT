@@ -4,7 +4,10 @@ __pycache__/
 *$py.class
 
 # C extensions
+*.json
+*.func_names
 *.so
+*.til
 *.id0
 *.id1
 *.id2

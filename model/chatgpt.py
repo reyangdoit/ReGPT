@@ -1,5 +1,5 @@
 import openai
-import model.config
+import config
 import logging
 logger = logging.getLogger("chatgpt")
 
@@ -9,9 +9,9 @@ class OpenAI:
     def __init__(self) -> None:
         
 
-        self._model_name = model.config.get_config("OpenAI","MODEL")
-        self._api_key = model.config.get_config("OpenAI", "API_KEY")
-        self._base_url =  model.config.get_config("OpenAI", "BASE_URL")
+        self._model_name = config.get_config("OpenAI","MODEL")
+        self._api_key = config.get_config("OpenAI", "API_KEY")
+        self._base_url =  config.get_config("OpenAI", "BASE_URL")
 
         if not self._base_url:
             self._base_url = "https://api.openai.com/v1/chat/completions"
