@@ -1,5 +1,5 @@
 # ReGPT
-Aiming to accomplish a reverse software enginnering.
+Aiming to accomplish a reverse software enginnering based on LLM.
 
 
 # Install & Preparation
@@ -16,10 +16,12 @@ Aiming to accomplish a reverse software enginnering.
     - install python 3.10
     - install python package: `pip install -r requirements.txt`
 3. chatgpt setting up
+    - copy config.example.ini to config.ini: `cp config.example.ini config.ini`
     - get your openai api key
-    - edit the `config.ini` file for your api key
+    - edit the `config.ini` file with your api key
 4. ida setting up
-    - edit the `config.ini` file for your ida path
+    - edit the `config.ini` file with your ida path
+
 
 # Usage
 

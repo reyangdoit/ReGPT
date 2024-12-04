@@ -2,8 +2,12 @@
 __pycache__/
 *.py[cod]
 *$py.class
+config.ini
 
 # C extensions
+.vscode/
+results.md
+idalog
 *.json
 *.func_names
 *.so
