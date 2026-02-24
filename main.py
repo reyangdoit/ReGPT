@@ -11,7 +11,7 @@ logger = logging.getLogger("main")
 logger.setLevel(logging.DEBUG)
 import argparse
 
-#test this with security workflow
+#test security workflow after apikey configured in secrets
 
 # 定义主函数
 def main():
