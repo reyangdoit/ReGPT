@@ -11,7 +11,8 @@ logger = logging.getLogger("main")
 logger.setLevel(logging.DEBUG)
 import argparse
 
-#test security workflow after apikey configured in secrets
+#test security workflow after apikey configured in secrets.
+# Create a new branch to trigger PR.
 
 # 定义主函数
 def main():
