@@ -19,5 +19,5 @@ jobs:
       - uses: anthropics/claude-code-security-review@main
         with:
           comment-pr: true
-          claude-api-key: sk-XOA3JPfOxTbKILT2WkaE0Ui5y37EBqnJR4qvy3MUwU4gJLzZ
+          claude-api-key: ${{ secrets.CLAUDE_API_KEY }}
           claude-base-url: https://aicanapi.com
