@@ -20,4 +20,3 @@ jobs:
         with:
           comment-pr: true
           claude-api-key: ${{ secrets.CLAUDE_API_KEY }}
-          claude-base-url: https://aicanapi.com
