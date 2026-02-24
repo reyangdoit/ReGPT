@@ -13,6 +13,7 @@ import argparse
 
 #test security workflow after apikey configured in secrets.
 # Create a new branch to trigger PR.
+# set up claude api key in github repo
 
 # 定义主函数
 def main():
